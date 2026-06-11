@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Landmark } from 'lucide-react';
+import { Menu, X, Palmtree } from 'lucide-react';
 import type { NavLink } from '../data/homeData';
 
 interface HeaderProps {
@@ -50,14 +50,14 @@ export const Header: React.FC<HeaderProps> = ({ links }) => {
             onClick={(e) => handleLinkClick(e, '#home')}
             className="flex items-center space-x-3 group"
           >
-            <div className="p-2.5 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg shadow-[0_0_15px_rgba(245,158,11,0.2)] group-hover:shadow-[0_0_25px_rgba(245,158,11,0.4)] transition-all duration-300">
-              <Landmark className="h-6 w-6 text-zinc-950 stroke-[2.5]" />
+            <div className="p-2.5 bg-gradient-to-br from-emerald-400 to-green-600 rounded-lg shadow-[0_0_15px_rgba(16,185,129,0.2)] group-hover:shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all duration-300">
+              <Palmtree className="h-6 w-6 text-zinc-950 stroke-[2.2]" />
             </div>
             <div className="flex flex-col">
               <span className="text-xl font-bold tracking-wider text-white font-sans uppercase">
                 Al Kayanat
               </span>
-              <span className="text-[9px] tracking-[0.25em] text-amber-500 uppercase font-medium">
+              <span className="text-[9px] tracking-[0.25em] text-emerald-500 uppercase font-medium">
                 Holding Group
               </span>
             </div>
@@ -70,16 +70,16 @@ export const Header: React.FC<HeaderProps> = ({ links }) => {
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
-                className="text-sm font-medium text-zinc-300 hover:text-amber-500 transition-colors duration-200 relative py-2 group"
+                className="text-sm font-medium text-zinc-300 hover:text-emerald-500 transition-colors duration-200 relative py-2 group"
               >
                 {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-500 transition-all duration-300 group-hover:w-full" />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
             <a
               href="#contact"
               onClick={(e) => handleLinkClick(e, '#contact')}
-              className="inline-flex items-center justify-center px-5 py-2.5 border border-amber-500/30 text-sm font-medium rounded-lg text-amber-400 bg-amber-500/5 hover:bg-gradient-to-r hover:from-amber-500 hover:to-yellow-600 hover:text-zinc-950 transition-all duration-300 shadow-[0_0_10px_rgba(245,158,11,0.05)] hover:shadow-[0_0_15px_rgba(245,158,11,0.25)]"
+              className="inline-flex items-center justify-center px-5 py-2.5 border border-emerald-500/30 text-sm font-medium rounded-lg text-emerald-400 bg-emerald-500/5 hover:bg-gradient-to-r hover:from-emerald-500 hover:to-green-600 hover:text-zinc-950 transition-all duration-300 shadow-[0_0_10px_rgba(16,185,129,0.05)] hover:shadow-[0_0_15px_rgba(16,185,129,0.25)]"
             >
               Get a Quote
             </a>
@@ -119,7 +119,7 @@ export const Header: React.FC<HeaderProps> = ({ links }) => {
             <a
               href="#contact"
               onClick={(e) => handleLinkClick(e, '#contact')}
-              className="block w-full text-center px-5 py-3 border border-amber-500/30 text-base font-medium rounded-lg text-amber-400 bg-amber-500/5 hover:bg-gradient-to-r hover:from-amber-500 hover:to-yellow-600 hover:text-zinc-950 transition-all duration-300"
+              className="block w-full text-center px-5 py-3 border border-emerald-500/30 text-base font-medium rounded-lg text-emerald-400 bg-emerald-500/5 hover:bg-gradient-to-r hover:from-emerald-500 hover:to-green-600 hover:text-zinc-950 transition-all duration-300"
             >
               Get a Quote
             </a>

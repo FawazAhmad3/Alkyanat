@@ -43,10 +43,10 @@ export const Home: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white font-sans selection:bg-amber-500 selection:text-zinc-950 overflow-x-hidden">
+    <div className="min-h-screen bg-zinc-950 text-white font-sans selection:bg-emerald-500 selection:text-zinc-950 overflow-x-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[600px] pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-[-10%] left-[10%] w-[35%] h-[50%] rounded-full bg-amber-500/5 blur-[120px]" />
+        <div className="absolute top-[-10%] left-[10%] w-[35%] h-[50%] rounded-full bg-emerald-500/5 blur-[120px]" />
         <div className="absolute top-[20%] right-[5%] w-[40%] h-[40%] rounded-full bg-blue-500/5 blur-[150px]" />
       </div>
 
@@ -59,14 +59,14 @@ export const Home: React.FC = () => {
           <div className="text-center max-w-4xl mx-auto">
             {/* Banner/Tag */}
             <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs text-zinc-400 mb-8 animate-fade-in">
-              <span className="h-2 w-2 rounded-full bg-amber-500 animate-pulse" />
+              <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
               <span className="font-medium tracking-wide uppercase">Vision 2030 Aligned Operations</span>
             </div>
 
             {/* Title */}
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-8 leading-tight">
               {hero.title}{' '}
-              <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-600">
+              <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-emerald-500 to-green-600">
                 {hero.highlight}
               </span>
             </h1>
@@ -80,7 +80,7 @@ export const Home: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="#entities"
-                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 border border-transparent text-sm font-semibold rounded-xl text-zinc-950 bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 shadow-[0_4px_20px_rgba(245,158,11,0.25)] hover:shadow-[0_4px_30px_rgba(245,158,11,0.4)] transition-all duration-300 transform hover:-translate-y-0.5"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 border border-transparent text-sm font-semibold rounded-xl text-zinc-950 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 shadow-[0_4px_20px_rgba(16,185,129,0.25)] hover:shadow-[0_4px_30px_rgba(16,185,129,0.4)] transition-all duration-300 transform hover:-translate-y-0.5"
               >
                 {hero.primaryCta}
                 <Icons.ArrowRight className="ml-2 h-4 w-4 stroke-[2.5]" />
@@ -104,7 +104,7 @@ export const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Heading */}
           <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-500 mb-3">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-500 mb-3">
               Corporate Portfolio
             </h2>
             <p className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-4">
@@ -130,7 +130,7 @@ export const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Heading */}
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-500 mb-3">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-500 mb-3">
               Group Performance
             </h2>
             <p className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-4">
@@ -156,7 +156,7 @@ export const Home: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-center">
             {/* Left Content */}
             <div className="lg:col-span-1 space-y-6">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-500">
+              <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-500">
                 Our Foundation
               </h2>
               <p className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
@@ -168,7 +168,7 @@ export const Home: React.FC = () => {
               <div className="pt-2">
                 <a
                   href="#contact"
-                  className="inline-flex items-center text-sm font-semibold text-amber-400 hover:text-amber-300 transition-colors"
+                  className="inline-flex items-center text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
                 >
                   Learn more about our standards
                   <Icons.ArrowRight className="ml-2 h-4 w-4" />
@@ -185,7 +185,7 @@ export const Home: React.FC = () => {
                     key={idx}
                     className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 p-6 rounded-2xl bg-zinc-900/40 border border-zinc-900 hover:border-zinc-800 transition-colors duration-300"
                   >
-                    <div className="p-3 bg-amber-500/5 border border-amber-500/10 rounded-xl text-amber-500 shrink-0">
+                    <div className="p-3 bg-emerald-500/5 border border-emerald-500/10 rounded-xl text-emerald-500 shrink-0">
                       <ValIcon className="h-6 w-6 stroke-[2]" />
                     </div>
                     <div>
@@ -211,7 +211,7 @@ export const Home: React.FC = () => {
             {/* Contact Details Column */}
             <div className="lg:col-span-5 space-y-8">
               <div>
-                <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-500 mb-3">
+                <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-500 mb-3">
                   Connect With Us
                 </h2>
                 <p className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-6">
@@ -225,15 +225,15 @@ export const Home: React.FC = () => {
               {/* Quick Contact Info Block */}
               <div className="p-6 rounded-2xl bg-zinc-900/30 border border-zinc-900 space-y-4">
                 <div className="flex items-center space-x-3 text-zinc-400">
-                  <Icons.Phone className="h-5 w-5 text-amber-500 shrink-0" />
+                  <Icons.Phone className="h-5 w-5 text-emerald-500 shrink-0" />
                   <span className="text-sm font-medium">{homeData.footer.contactInfo.phone}</span>
                 </div>
                 <div className="flex items-center space-x-3 text-zinc-400">
-                  <Icons.Mail className="h-5 w-5 text-amber-500 shrink-0" />
+                  <Icons.Mail className="h-5 w-5 text-emerald-500 shrink-0" />
                   <span className="text-sm font-medium">{homeData.footer.contactInfo.email}</span>
                 </div>
                 <div className="flex items-start space-x-3 text-zinc-400">
-                  <Icons.MapPin className="h-5 w-5 text-amber-500 shrink-0 mt-0.5" />
+                  <Icons.MapPin className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
                   <span className="text-sm font-medium leading-relaxed">
                     {homeData.footer.contactInfo.address}
                   </span>
@@ -255,7 +255,7 @@ export const Home: React.FC = () => {
                     </p>
                     <button
                       onClick={() => setSubmitted(false)}
-                      className="mt-6 inline-flex text-xs font-semibold uppercase tracking-wider text-amber-400 hover:text-amber-300 focus:outline-none"
+                      className="mt-6 inline-flex text-xs font-semibold uppercase tracking-wider text-emerald-400 hover:text-emerald-300 focus:outline-none"
                     >
                       Send another message
                     </button>
@@ -275,7 +275,7 @@ export const Home: React.FC = () => {
                           required
                           value={formData.name}
                           onChange={handleInputChange}
-                          className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all text-sm"
+                          className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all text-sm"
                           placeholder="Abdullah bin Fahd"
                         />
                       </div>
@@ -292,7 +292,7 @@ export const Home: React.FC = () => {
                           required
                           value={formData.email}
                           onChange={handleInputChange}
-                          className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all text-sm"
+                          className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all text-sm"
                           placeholder="name@company.com"
                         />
                       </div>
@@ -310,7 +310,7 @@ export const Home: React.FC = () => {
                           id="company"
                           value={formData.company}
                           onChange={handleInputChange}
-                          className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all text-sm"
+                          className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all text-sm"
                           placeholder="Company Ltd."
                         />
                       </div>
@@ -326,7 +326,7 @@ export const Home: React.FC = () => {
                           id="phone"
                           value={formData.phone}
                           onChange={handleInputChange}
-                          className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all text-sm"
+                          className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all text-sm"
                           placeholder="+966 50 000 0000"
                         />
                       </div>
@@ -342,7 +342,7 @@ export const Home: React.FC = () => {
                         id="entity"
                         value={formData.entity}
                         onChange={handleInputChange}
-                        className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all text-sm appearance-none cursor-pointer"
+                        className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all text-sm appearance-none cursor-pointer"
                       >
                         <option value="machinery">Al Kayanat Heavy Equipment</option>
                         <option value="logistics">Al Kayanat Logistics & Supply</option>
@@ -364,7 +364,7 @@ export const Home: React.FC = () => {
                         rows={4}
                         value={formData.message}
                         onChange={handleInputChange}
-                        className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all text-sm resize-none"
+                        className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all text-sm resize-none"
                         placeholder="Please describe your requirements..."
                       />
                     </div>
@@ -372,7 +372,7 @@ export const Home: React.FC = () => {
                     {/* Submit Button */}
                     <button
                       type="submit"
-                      className="w-full inline-flex items-center justify-center px-6 py-4 border border-transparent text-sm font-semibold rounded-xl text-zinc-950 bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
+                      className="w-full inline-flex items-center justify-center px-6 py-4 border border-transparent text-sm font-semibold rounded-xl text-zinc-950 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
                     >
                       Send Message Inquiry
                       <Icons.Send className="ml-2 h-4 w-4" />

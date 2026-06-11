@@ -61,7 +61,7 @@ export const homeData: HomeData = {
   ],
   hero: {
     title: "Building the Future of Industries Across",
-    highlight: "The Kingdom & Beyond",
+    highlight: "Saudi Arabia & Beyond",
     subtitle: "Al Kayanat Group coordinates and supports a diverse ecosystem of industry-leading entities specializing in heavy machinery, smart logistics, premium real estate development, and breakthrough technology ventures.",
     primaryCta: "Explore Our Entities",
     secondaryCta: "Get in Touch"

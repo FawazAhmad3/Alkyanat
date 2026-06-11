@@ -18,7 +18,7 @@ export const EntityCard: React.FC<EntityCardProps> = ({ entity }) => {
       <div>
         {/* Category & Header */}
         <div className="flex items-start justify-between mb-6">
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-amber-500/80 px-2.5 py-1 rounded bg-amber-500/5 border border-amber-500/10">
+          <span className="text-[11px] font-semibold uppercase tracking-wider text-emerald-500/80 px-2.5 py-1 rounded bg-emerald-500/5 border border-emerald-500/10">
             {entity.category}
           </span>
           <div className={`p-3 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-400 group-hover:text-white transition-all duration-300 group-hover:border-zinc-600`}>
@@ -27,7 +27,7 @@ export const EntityCard: React.FC<EntityCardProps> = ({ entity }) => {
         </div>
 
         {/* Title & Description */}
-        <h3 className="text-xl font-bold text-white mb-3 tracking-wide group-hover:text-amber-400 transition-colors duration-300">
+        <h3 className="text-xl font-bold text-white mb-3 tracking-wide group-hover:text-emerald-400 transition-colors duration-300">
           {entity.name}
         </h3>
         <p className="text-sm text-zinc-400 leading-relaxed mb-6 font-light">
@@ -53,7 +53,7 @@ export const EntityCard: React.FC<EntityCardProps> = ({ entity }) => {
         {/* Interactive CTA link */}
         <a
           href="#contact"
-          className="inline-flex items-center text-xs font-semibold uppercase tracking-wider text-amber-400 group-hover:text-amber-300 transition-colors duration-200"
+          className="inline-flex items-center text-xs font-semibold uppercase tracking-wider text-emerald-400 group-hover:text-emerald-300 transition-colors duration-200"
         >
           Request Partnership Details
           <Icons.ArrowRight className="ml-2 h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />

@@ -1,0 +1,421 @@
+{
+  "en": {
+    "navigation": {
+      "logo": {
+        "brandName": "Al Kayanat",
+        "subtitle": "Holding Group"
+      },
+      "headerLinks": [
+        { "label": "Home", "href": "#home" },
+        { "label": "Our Entities", "href": "#entities" },
+        { "label": "Group Performance", "href": "#stats" },
+        { "label": "Our Pillars", "href": "#pillars" },
+        { "label": "Contact Us", "href": "#contact" }
+      ],
+      "footerSections": [
+        {
+          "title": "Navigation",
+          "links": [
+            { "label": "Home", "href": "#home" },
+            { "label": "Our Entities", "href": "#entities" },
+            { "label": "Group Performance", "href": "#stats" },
+            { "label": "Our Pillars", "href": "#pillars" }
+          ]
+        },
+        {
+          "title": "Our Portfolios",
+          "links": [
+            { "label": "Heavy Equipment", "href": "#entities" },
+            { "label": "Smart Logistics", "href": "#entities" },
+            { "label": "Real Estate Dev", "href": "#entities" },
+            { "label": "Tech Ventures", "href": "#entities" }
+          ]
+        }
+      ],
+      "contactInfo": {
+        "address": "King Fahd Rd, Al Rahmaniyah, Riyadh 12341, Kingdom of Saudi Arabia",
+        "phone": "+966 11 456 7890",
+        "email": "info@alkyanat.com",
+        "hours": "Sunday - Thursday: 8:00 AM - 5:00 PM"
+      },
+      "socialLinks": [
+        { "platform": "LinkedIn", "url": "https://linkedin.com", "iconName": "Linkedin" },
+        { "platform": "Twitter / X", "url": "https://x.com", "iconName": "Twitter" },
+        { "platform": "Instagram", "url": "https://instagram.com", "iconName": "Instagram" }
+      ],
+      "copyright": "Al Kayanat Holding Group. All rights reserved.",
+      "ctaBtn": "Get a Quote",
+      "backToTop": "Back to top"
+    },
+    "home": {
+      "hero": {
+        "tagline": "Vision 2030 Aligned Operations",
+        "title": "Building the Future of Industries Across",
+        "highlight": "Saudi Arabia & Beyond",
+        "subtitle": "Al Kayanat Group coordinates and supports a diverse ecosystem of industry-leading entities specializing in heavy machinery, smart logistics, premium real estate development, and breakthrough technology ventures.",
+        "primaryCta": "Explore Our Entities",
+        "secondaryCta": "Get in Touch"
+      },
+      "entitiesSection": {
+        "tagline": "Corporate Portfolio",
+        "title": "The Entities of Al Kayanat",
+        "subtitle": "Through strategic coordination, we provide each subsidiary with robust corporate guidance, financial stability, and shared technological assets to execute high-impact regional projects."
+      },
+      "entities": [
+        {
+          "id": "machinery",
+          "name": "Al Kayanat Heavy Equipment",
+          "category": "Industrial & Infrastructure Support",
+          "description": "A premier fleet of well-maintained excavators, mobile cranes, loaders, and compactors, powering Saudi Arabia's major infrastructure, municipal, and commercial developments.",
+          "iconName": "Truck",
+          "accentColor": "from-emerald-500 to-green-600",
+          "metrics": [
+            { "label": "Fleet size", "value": "450+ Units" },
+            { "label": "Support coverage", "value": "24/7 KSA Wide" }
+          ]
+        },
+        {
+          "id": "logistics",
+          "name": "Al Kayanat Logistics & Supply",
+          "category": "Smart Freight & Transportation",
+          "description": "End-to-end heavy haulage, specialized cargo distribution, and site set-up logistics, connecting major industrial cities with remote project sites seamlessly.",
+          "iconName": "TrendingUp",
+          "accentColor": "from-emerald-500 to-green-600",
+          "metrics": [
+            { "label": "Cargo delivered", "value": "2.5M+ Tons" },
+            { "label": "On-time rate", "value": "99.4%" }
+          ]
+        },
+        {
+          "id": "development",
+          "name": "Al Kayanat Real Estate & Dev",
+          "category": "Premium Commercial & Residential",
+          "description": "Crafting architectural landmarks and master-planned commercial zones that combine futuristic sustainability with luxury aesthetics and commercial utility.",
+          "iconName": "Home",
+          "accentColor": "from-emerald-500 to-green-600",
+          "metrics": [
+            { "label": "Developed Area", "value": "12M+ sq. ft." },
+            { "label": "Project Value", "value": "SAR 1.8B+" }
+          ]
+        },
+        {
+          "id": "ventures",
+          "name": "Al Kayanat Tech Ventures",
+          "category": "Digital Transformation & Investments",
+          "description": "Investing in and incubating AI-driven prop-tech, supply-chain automation, and smart logistics platforms to future-proof our core operational entities.",
+          "iconName": "Cpu",
+          "accentColor": "from-emerald-500 to-green-600",
+          "metrics": [
+            { "label": "Incubated Startups", "value": "8 Companies" },
+            { "label": "Active Patents", "value": "14 Registered" }
+          ]
+        }
+      ],
+      "statsSection": {
+        "tagline": "Group Performance",
+        "title": "Operational Statistics at a Glance",
+        "subtitle": "Demonstrated scale and delivery reliability across private, industrial, and government sectors."
+      },
+      "stats": [
+        {
+          "value": "15+",
+          "label": "Years of Excellence",
+          "description": "A solid track record of powering municipal infrastructure and commercial projects."
+        },
+        {
+          "value": "600+",
+          "label": "Active Projects",
+          "description": "Equipping construction, distribution, and infrastructure tasks daily."
+        },
+        {
+          "value": "1.2K+",
+          "label": "Dedicated Professionals",
+          "description": "Certified operators, engineers, logisticians, and support staff."
+        },
+        {
+          "value": "100%",
+          "label": "KSA Coverage",
+          "description": "Strategic operating bases in Riyadh, Jeddah, Dammam, and NEOM."
+        }
+      ],
+      "pillarsSection": {
+        "tagline": "Our Foundation",
+        "title": "Pillars That Shape Our Actions",
+        "subtitle": "Our business model is built on standard industry safety protocols, data-backed operational systems, and future-forward ecological goals.",
+        "cta": "Learn more about our standards"
+      },
+      "pillars": [
+        {
+          "title": "Uncompromising Safety",
+          "description": "Rigorous maintenance schedules, strict safety policies, and continuous training programs to ensure zero-harm work environments.",
+          "iconName": "Shield"
+        },
+        {
+          "title": "Operational Precision",
+          "description": "Applying data-driven route optimization, real-time fleet telematics, and agile project management to guarantee on-time execution.",
+          "iconName": "Activity"
+        },
+        {
+          "title": "Sustainable Innovation",
+          "description": "Introducing eco-efficient machinery, reducing fuel footprints through smart routing, and prioritizing green building materials.",
+          "iconName": "Leaf"
+        }
+      ],
+      "contactSection": {
+        "tagline": "Connect With Us",
+        "title": "Initiate a Collaboration",
+        "subtitle": "Have a question about heavy machinery rental, logistics dispatch, real estate leases, or corporate investment? Fill out the inquiry form, and our regional operations desks will respond within 24 hours.",
+        "phoneLabel": "Phone Number",
+        "emailLabel": "Email Address",
+        "addressLabel": "Headquarters Address",
+        "nameInputLabel": "Your Name",
+        "emailInputLabel": "Email Address",
+        "companyInputLabel": "Company / Organization",
+        "phoneInputLabel": "Phone Number",
+        "entitySelectLabel": "Portfolio Entity of Interest",
+        "messageInputLabel": "Message Details",
+        "submitBtn": "Send Message Inquiry",
+        "successTitle": "Inquiry Received",
+        "successDesc": "Thank you for contacting Al Kayanat Group. Your inquiry has been forwarded to the appropriate desk, and we will get back to you shortly.",
+        "successReset": "Send another message",
+        "formPlaceholders": {
+          "name": "Abdullah bin Fahd",
+          "email": "name@company.com",
+          "company": "Company Ltd.",
+          "phone": "+966 50 000 0000",
+          "message": "Please describe your requirements..."
+        },
+        "selectOptions": [
+          { "id": "machinery", "label": "Al Kayanat Heavy Equipment" },
+          { "id": "logistics", "label": "Al Kayanat Logistics & Supply" },
+          { "id": "development", "label": "Al Kayanat Real Estate & Dev" },
+          { "id": "ventures", "label": "Al Kayanat Tech Ventures" },
+          { "id": "general", "label": "General Group Inquiry" }
+        ]
+      }
+    }
+  },
+  "ar": {
+    "navigation": {
+      "logo": {
+        "brandName": "الكيانات",
+        "subtitle": "مجموعة قابضة"
+      },
+      "headerLinks": [
+        { "label": "الرئيسية", "href": "#home" },
+        { "label": "كياناتنا", "href": "#entities" },
+        { "label": "الأداء العام", "href": "#stats" },
+        { "label": "ركائزنا", "href": "#pillars" },
+        { "label": "اتصل بنا", "href": "#contact" }
+      ],
+      "footerSections": [
+        {
+          "title": "خريطة الموقع",
+          "links": [
+            { "label": "الرئيسية", "href": "#home" },
+            { "label": "كياناتنا", "href": "#entities" },
+            { "label": "الأداء العام", "href": "#stats" },
+            { "label": "ركائزنا", "href": "#pillars" }
+          ]
+        },
+        {
+          "title": "مجالات أعمالنا",
+          "links": [
+            { "label": "المعدات الثقيلة", "href": "#entities" },
+            { "label": "الخدمات اللوجستية", "href": "#entities" },
+            { "label": "التطوير العقاري", "href": "#entities" },
+            { "label": "الاستثمارات التقنية", "href": "#entities" }
+          ]
+        }
+      ],
+      "contactInfo": {
+        "address": "طريق الملك فهد، حي الرحمانية، الرياض 12341، المملكة العربية السعودية",
+        "phone": "+٩٦٦ ١١ ٤٥٦ ٧٨٩٠",
+        "email": "info@alkyanat.com",
+        "hours": "الأحد - الخميس: ٨:٠٠ صباحاً - ٥:٠٠ مساءً"
+      },
+      "socialLinks": [
+        { "platform": "LinkedIn", "url": "https://linkedin.com", "iconName": "Linkedin" },
+        { "platform": "Twitter / X", "url": "https://x.com", "iconName": "Twitter" },
+        { "platform": "Instagram", "url": "https://instagram.com", "iconName": "Instagram" }
+      ],
+      "copyright": "مجموعة الكيانات القابضة. جميع الحقوق محفوظة.",
+      "ctaBtn": "طلب عرض أسعار",
+      "backToTop": "العودة للأعلى"
+    },
+    "home": {
+      "hero": {
+        "tagline": "عمليات متوافقة مع رؤية المملكة 2030",
+        "title": "نبني مستقبل القطاعات الحيوية في",
+        "highlight": "المملكة العربية السعودية وخارجها",
+        "subtitle": "تقود مجموعة الكيانات منظومة متكاملة من الشركات الرائدة المتخصصة في تأجير المعدات الثقيلة، والخدمات اللوجستية الذكية، والتطوير العقاري المتميز، والاستثمارات التقنية الواعدة.",
+        "primaryCta": "استكشف كياناتنا",
+        "secondaryCta": "تواصل معنا"
+      },
+      "entitiesSection": {
+        "tagline": "المحفظة الاستثمارية",
+        "title": "كيانات مجموعة الكيانات",
+        "subtitle": "من خلال التوجيه الاستراتيجي، نوفر لكل شركة تابعة دعماً مؤسسياً قوياً واستقراراً مالياً وأصولاً تقنية مشتركة لتنفيذ مشاريع إقليمية كبرى."
+      },
+      "entities": [
+        {
+          "id": "machinery",
+          "name": "الكيانات للمعدات الثقيلة",
+          "category": "الدعم الصناعي والبنية التحتية",
+          "description": "أسطول متكامل من الحفارات والرافعات المتحركة والممهدات الحديثة لدعم مشاريع البنية التحتية والمخططات البلدية والتجارية الكبرى في المملكة.",
+          "iconName": "Truck",
+          "accentColor": "from-emerald-500 to-green-600",
+          "metrics": [
+            { "label": "حجم الأسطول", "value": "+٤٥٠ آلية" },
+            { "label": "دعم العمليات", "value": "٢٤/٧ بالمملكة" }
+          ]
+        },
+        {
+          "id": "logistics",
+          "name": "الكيانات للخدمات اللوجستية",
+          "category": "الشحن الذكي والنقل الثقيل",
+          "description": "حلول نقل متكاملة للمعدات الثقيلة والشحنات الضخمة وتجهيز المواقع الإنشائية، لربط المدن الصناعية الكبرى بالمناطق النائية بكفاءة عالية.",
+          "iconName": "TrendingUp",
+          "accentColor": "from-emerald-500 to-green-600",
+          "metrics": [
+            { "label": "البضائع المشحونة", "value": "+٢.٥ مليون طن" },
+            { "label": "دقة المواعيد", "value": "٩٩.٤٪" }
+          ]
+        },
+        {
+          "id": "development",
+          "name": "الكيانات للتطوير العقاري",
+          "category": "المشاريع التجارية والسكنية الفاخرة",
+          "description": "تطوير معالم معمارية ومناطق تجارية متكاملة تجمع بين الاستدامة المستقبلية، والتصاميم الراقية، والجدوى الاستثمارية العالية.",
+          "iconName": "Home",
+          "accentColor": "from-emerald-500 to-green-600",
+          "metrics": [
+            { "label": "المساحات المطورة", "value": "+١٢ مليون قدم مربع" },
+            { "label": "قيمة المشاريع", "value": "+١.٨ مليار ريال" }
+          ]
+        },
+        {
+          "id": "ventures",
+          "name": "الكيانات للاستثمارات التقنية",
+          "category": "التحول الرقمي وحاضنات الأعمال",
+          "description": "الاستثمار في منصات أتمتة سلاسل الإمداد اللوجستي وحلول العقار الذكية المبنية على الذكاء الاصطناعي لتأمين نمو عمليات المجموعة.",
+          "iconName": "Cpu",
+          "accentColor": "from-emerald-500 to-green-600",
+          "metrics": [
+            { "label": "الشركات المحتضنة", "value": "٨ شركات" },
+            { "label": "براءات الاختراع", "value": "١٤ براءة مسجلة" }
+          ]
+        }
+      ],
+      "statsSection": {
+        "tagline": "أداء المجموعة",
+        "title": "إحصائيات عملياتنا بالأرقام",
+        "subtitle": "سجل حافل من الإنجازات والسرعة في التنفيذ لخدمة القطاعات الحكومية والصناعية والتجارية."
+      },
+      "stats": [
+        {
+          "value": "+١٥",
+          "label": "سنة من التميز",
+          "description": "تاريخ حافل في تمكين مشاريع البنية التحتية والإنشائية."
+        },
+        {
+          "value": "+٦٠0",
+          "label": "مشروع نشط",
+          "description": "تجهيز وتلبية احتياجات التشييد والخدمات اللوجستية يومياً."
+        },
+        {
+          "value": "+١.٢ ألف",
+          "label": "كادر متخصص",
+          "description": "مهندسون وفنيون وسائقو معدات محترفون ومرخصون."
+        },
+        {
+          "value": "١٠٠٪",
+          "label": "تغطية كاملة للمملكة",
+          "description": "فروع عمليات رئيسية في الرياض، جدة، الدمام، ونيوم."
+        }
+      ],
+      "statsSection": {
+        "tagline": "أداء المجموعة",
+        "title": "إحصائيات عملياتنا بالأرقام",
+        "subtitle": "سجل حافل من الإنجازات والسرعة في التنفيذ لخدمة القطاعات الحكومية والصناعية والتجارية."
+      },
+      "stats": [
+        {
+          "value": "+١٥",
+          "label": "سنة من التميز",
+          "description": "تاريخ حافل في تمكين مشاريع البنية التحتية والإنشائية."
+        },
+        {
+          "value": "+٦٠0",
+          "label": "مشروع نشط",
+          "description": "تجهيز وتلبية احتياجات التشييد والخدمات اللوجستية يومياً."
+        },
+        {
+          "value": "+١.٢ ألف",
+          "label": "كادر متخصص",
+          "description": "مهندسون وفنيون وسائقو معدات محترفون ومرخصون."
+        },
+        {
+          "value": "١٠٠٪",
+          "label": "تغطية كاملة للمملكة",
+          "description": "فروع عمليات رئيسية في الرياض، جدة، الدمام، ونيوم."
+        }
+      ],
+      "pillarsSection": {
+        "tagline": "ركائزنا الأساسية",
+        "title": "مبادئ ترسم ملامح أعمالنا",
+        "subtitle": "يرتكز نموذج أعمالنا على أعلى معايير السلامة المهنية، والأنظمة التشغيلية الدقيقة، وأهداف التنمية المستدامة الحيوية.",
+        "cta": "تعرف على معاييرنا التشغيلية"
+      },
+      "pillars": [
+        {
+          "title": "السلامة المطلقة أولاً",
+          "description": "خطط صيانة صارمة، وتدريبات دورية، وتطبيق كامل لإجراءات السلامة لضمان بيئة عمل خالية من الحوادث.",
+          "iconName": "Shield"
+        },
+        {
+          "title": "الدقة التشغيلية والسرعة",
+          "description": "تطبيقات تتبع المسارات الفوري، وتحليلات الاتصال الذكي بالأسطول لضمان الالتزام بمواعيد التسليم.",
+          "iconName": "Activity"
+        },
+        {
+          "title": "الابتكار والاستدامة",
+          "description": "استقدام معدات صديقة للبيئة لتقليل استهلاك الوقود، والاعتماد على مواد البناء الخضراء في مشاريعنا العقارية.",
+          "iconName": "Leaf"
+        }
+      ],
+      "contactSection": {
+        "tagline": "تواصل معنا",
+        "title": "ابدأ شراكة جديدة معنا",
+        "subtitle": "هل لديك استفسار حول تأجير المعدات الثقيلة، أو توزيع الشحنات، أو خدمات التطوير العقاري، أو الاستثمار؟ تفضل بتعبئة النموذج وسيتواصل معك مكتبنا المختص خلال ٢٤ ساعة.",
+        "phoneLabel": "الهاتف الموحد",
+        "emailLabel": "البريد الإلكتروني",
+        "addressLabel": "العنوان الرئيسي",
+        "nameInputLabel": "الاسم الكريم",
+        "emailInputLabel": "البريد الإلكتروني",
+        "companyInputLabel": "الشركة / المؤسسة",
+        "phoneInputLabel": "رقم الجوال",
+        "entitySelectLabel": "الشركة التابعة المعنية",
+        "messageInputLabel": "تفاصيل الاستفسار",
+        "submitBtn": "إرسال الاستفسار",
+        "successTitle": "تم استلام استفسارك بنجاح",
+        "successDesc": "نشكرك على تواصلك مع مجموعة الكيانات القابضة. تم تحويل استفسارك إلى المكتب المختص وسنقوم بالرد عليك في أقرب وقت ممكن.",
+        "successReset": "إرسال رسالة أخرى",
+        "formPlaceholders": {
+          "name": "عبد الله بن فهد",
+          "email": "name@company.com",
+          "company": "شركة الكيان المحدودة",
+          "phone": "+٩٦٦ ٥٠ ٠٠٠ ٠٠٠٠",
+          "message": "تفضل بوصف متمتطلباتك بالتفصيل..."
+        },
+        "selectOptions": [
+          { "id": "machinery", "label": "الكيانات للمعدات الثقيلة" },
+          { "id": "logistics", "label": "الكيانات للخدمات اللوجستية" },
+          { "id": "development", "label": "الكيانات للتطوير العقاري" },
+          { "id": "ventures", "label": "الكيانات للاستثمارات التقنية" },
+          { "id": "general", "label": "استفسار عام عن المجموعة" }
+        ]
+      }
+    }
+  }
+}

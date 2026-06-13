@@ -1,11 +1,16 @@
 import React from 'react';
-import { MapPin, Phone, Mail, Clock, Palmtree, ArrowUp } from 'lucide-react';
-import navigationData from '../data/navigationData.json';
+import { MapPin, Phone, Mail, Clock, ArrowUp } from 'lucide-react';
+import translationData from '../data/translationData.json';
+import { Logo } from './Logo';
 
-export const Footer: React.FC = () => {
-  const { logo, footerSections, contactInfo, socialLinks, copyright } = navigationData;
+interface FooterProps {
+  currentLang: 'EN' | 'AR';
+}
 
-  // Resolve custom brand social vector items
+export const Footer: React.FC<FooterProps> = ({ currentLang }) => {
+  const langKey = currentLang.toLowerCase() as 'en' | 'ar';
+  const { footerSections, contactInfo, socialLinks, copyright, backToTop } = translationData[langKey].navigation;
+
   const renderSocialIcon = (iconName: string) => {
     switch (iconName) {
       case 'Linkedin':
@@ -40,6 +45,8 @@ export const Footer: React.FC = () => {
     });
   };
 
+  const isRtl = currentLang === 'AR';
+
   return (
     <footer className="bg-zinc-950 border-t border-zinc-900 pt-20 pb-10 text-zinc-400 relative overflow-hidden">
       {/* Decorative Glow Elements */}
@@ -47,29 +54,19 @@ export const Footer: React.FC = () => {
       <div className="absolute bottom-0 left-[10%] w-[250px] h-[250px] bg-blue-500/2 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 pb-16 border-b border-zinc-900">
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 pb-16 border-b border-zinc-900 ${isRtl ? 'text-right' : ''}`}>
           
           {/* Brand Info & Summary */}
           <div className="space-y-6">
-            <div className="flex items-center space-x-3">
-              <div className="p-2.5 bg-gradient-to-br from-emerald-400 to-green-600 rounded-xl shadow-[0_0_15px_rgba(16,185,129,0.15)]">
-                <Palmtree className="h-6 w-6 text-zinc-950 stroke-[2.2]" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-bold tracking-wider text-white uppercase leading-none pb-1">
-                  {logo.brandName}
-                </span>
-                <span className="text-[9px] tracking-[0.25em] text-emerald-500 uppercase font-semibold leading-none">
-                  {logo.subtitle}
-                </span>
-              </div>
-            </div>
+            <Logo lang={currentLang} />
             <p className="text-sm leading-relaxed text-zinc-500">
-              Al Kayanat Group is a premier Saudi conglomerate driving industrial innovation, smart logistics, sustainable development, and technology investments in line with Vision 2030.
+              {currentLang === 'AR' 
+                ? 'مجموعة الكيانات هي تكتل سعودي رائد يهدف إلى دفع عجلة الابتكار الصناعي، والخدمات اللوجستية الذكية، والتطوير العقاري المستدام، والاستثمارات التقنية بما يتماشى مع رؤية ٢٠٣٠.'
+                : 'Al Kayanat Group is a premier Saudi conglomerate driving industrial innovation, smart logistics, sustainable development, and technology investments in line with Vision 2030.'}
             </p>
             {/* Social Hub */}
-            <div className="flex space-x-3 pt-2">
-              {socialLinks.map((social) => (
+            <div className={`flex space-x-3 pt-2 ${isRtl ? 'justify-end space-x-reverse' : ''}`}>
+              {socialLinks.map((social: { platform: string; url: string; iconName: string }) => (
                 <a
                   key={social.platform}
                   href={social.url}
@@ -84,10 +81,10 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Quick Sections from data */}
+          {/* Quick Links / Portfolios */}
           {footerSections.map((section) => (
-            <div key={section.title} className="lg:pl-8">
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-6">
+            <div key={section.title} className={`${isRtl ? 'lg:pr-8' : 'lg:pl-8'}`}>
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-6 font-sans">
                 {section.title}
               </h3>
               <ul className="space-y-4">
@@ -95,9 +92,9 @@ export const Footer: React.FC = () => {
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-sm hover:text-emerald-400 transition-colors duration-250 flex items-center group"
+                      className="text-sm hover:text-emerald-400 transition-colors duration-250 flex items-center group font-sans"
                     >
-                      <span className="h-1.5 w-1.5 rounded-full bg-zinc-700 group-hover:bg-emerald-500 mr-2.5 transition-colors duration-250" />
+                      <span className={`h-1.5 w-1.5 rounded-full bg-zinc-700 group-hover:bg-emerald-500 transition-colors duration-250 ${isRtl ? 'ml-2.5 mr-0' : 'mr-2.5'}`} />
                       {link.label}
                     </a>
                   </li>
@@ -108,37 +105,37 @@ export const Footer: React.FC = () => {
 
           {/* Headquarters / Operations Desk */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-6">
-              Headquarters
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-6 font-sans">
+              {currentLang === 'AR' ? 'المقر الرئيسي' : 'Headquarters'}
             </h3>
             <ul className="space-y-5">
-              <li className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
-                <span className="text-sm leading-relaxed text-zinc-400">
+              <li className="flex items-start">
+                <MapPin className={`h-5 w-5 text-emerald-500 shrink-0 mt-0.5 ${isRtl ? 'ml-3 mr-0' : 'mr-3'}`} />
+                <span className="text-sm leading-relaxed text-zinc-400 font-sans">
                   {contactInfo.address}
                 </span>
               </li>
-              <li className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-emerald-500 shrink-0" />
+              <li className="flex items-center">
+                <Phone className={`h-5 w-5 text-emerald-500 shrink-0 ${isRtl ? 'ml-3 mr-0' : 'mr-3'}`} />
                 <a
                   href={`tel:${contactInfo.phone}`}
-                  className="text-sm hover:text-white transition-colors duration-250 font-medium"
+                  className="text-sm hover:text-white transition-colors duration-250 font-medium font-sans"
                 >
                   {contactInfo.phone}
                 </a>
               </li>
-              <li className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-emerald-500 shrink-0" />
+              <li className="flex items-center">
+                <Mail className={`h-5 w-5 text-emerald-500 shrink-0 ${isRtl ? 'ml-3 mr-0' : 'mr-3'}`} />
                 <a
                   href={`mailto:${contactInfo.email}`}
-                  className="text-sm hover:text-white transition-colors duration-250 font-medium"
+                  className="text-sm hover:text-white transition-colors duration-250 font-medium font-sans"
                 >
                   {contactInfo.email}
                 </a>
               </li>
-              <li className="flex items-start space-x-3">
-                <Clock className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
-                <span className="text-sm text-zinc-500 leading-relaxed">
+              <li className="flex items-start">
+                <Clock className={`h-5 w-5 text-emerald-500 shrink-0 mt-0.5 ${isRtl ? 'ml-3 mr-0' : 'mr-3'}`} />
+                <span className="text-sm text-zinc-500 leading-relaxed font-sans">
                   {contactInfo.hours}
                 </span>
               </li>
@@ -148,15 +145,15 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar: Copyright & Scroll to top */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between">
-          <p className="text-xs text-zinc-600 text-center sm:text-left mb-4 sm:mb-0">
+        <div className={`pt-8 flex flex-col sm:flex-row items-center justify-between border-t border-zinc-900/60 mt-12 ${isRtl ? 'sm:flex-row-reverse' : ''}`}>
+          <p className="text-xs text-zinc-600 text-center sm:text-left mb-4 sm:mb-0 font-sans">
             &copy; {new Date().getFullYear()} {copyright}
           </p>
           <button
             onClick={scrollToTop}
-            className="flex items-center space-x-2 text-xs font-semibold text-zinc-500 hover:text-emerald-400 transition-colors uppercase tracking-wider group focus:outline-none cursor-pointer"
+            className={`flex items-center space-x-2 text-xs font-semibold text-zinc-500 hover:text-emerald-400 transition-colors uppercase tracking-wider group focus:outline-none cursor-pointer ${isRtl ? 'space-x-reverse' : ''}`}
           >
-            <span>Back to top</span>
+            <span>{backToTop}</span>
             <div className="p-2 bg-zinc-900 border border-zinc-800/80 rounded-lg group-hover:bg-emerald-500 group-hover:text-zinc-950 transition-colors duration-300">
               <ArrowUp className="h-4 w-4" />
             </div>

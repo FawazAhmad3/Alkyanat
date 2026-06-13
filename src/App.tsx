@@ -1,11 +1,17 @@
+import { useState, useEffect } from 'react';
+import { Home } from './pages/Home';
+
 function App() {
-  return (
-    <div className="min-h-screen bg-zinc-950 text-white flex items-center justify-center font-sans">
-      <h1 className="text-3xl font-bold uppercase tracking-wider text-emerald-500">Al Kayanat</h1>
-    </div>
-  );
+  const [lang, setLang] = useState<'EN' | 'AR'>('EN');
+
+  // Sync document language and RTL layout direction dynamically
+  useEffect(() => {
+    const isAr = lang === 'AR';
+    document.documentElement.dir = isAr ? 'rtl' : 'ltr';
+    document.documentElement.lang = isAr ? 'ar' : 'en';
+  }, [lang]);
+
+  return <Home currentLang={lang} onLangChange={setLang} />;
 }
 
 export default App;
-
-

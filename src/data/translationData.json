@@ -21,15 +21,6 @@
             { "label": "Group Performance", "href": "#stats" },
             { "label": "Our Pillars", "href": "#pillars" }
           ]
-        },
-        {
-          "title": "Our Portfolios",
-          "links": [
-            { "label": "Heavy Equipment", "href": "#entities" },
-            { "label": "Smart Logistics", "href": "#entities" },
-            { "label": "Real Estate Dev", "href": "#entities" },
-            { "label": "Tech Ventures", "href": "#entities" }
-          ]
         }
       ],
       "contactInfo": {
@@ -216,15 +207,6 @@
             { "label": "كياناتنا", "href": "#entities" },
             { "label": "الأداء العام", "href": "#stats" },
             { "label": "ركائزنا", "href": "#pillars" }
-          ]
-        },
-        {
-          "title": "مجالات أعمالنا",
-          "links": [
-            { "label": "المعدات الثقيلة", "href": "#entities" },
-            { "label": "الخدمات اللوجستية", "href": "#entities" },
-            { "label": "التطوير العقاري", "href": "#entities" },
-            { "label": "الاستثمارات التقنية", "href": "#entities" }
           ]
         }
       ],

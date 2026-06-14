@@ -1,31 +1,7 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <!-- Circular white background with a thin gold border -->
-  <circle cx="50" cy="50" r="46" fill="#ffffff" stroke="url(#goldGrad)" stroke-width="2.5" />
-  
-  <defs>
-    <!-- Gold Gradient -->
-    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fbbf24" />
-      <stop offset="100%" stop-color="#d97706" />
-    </linearGradient>
-    <!-- Indigo Gradient -->
-    <linearGradient id="indigoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#6366f1" />
-      <stop offset="100%" stop-color="#4338ca" />
-    </linearGradient>
-  </defs>
-  
-  <!-- Interconnected geometric blocks representing the 'Entities' (Kayanat) -->
-  <g transform="translate(50, 50) scale(0.85)">
-    <!-- Indigo base structural blocks -->
-    <path d="M-22,-22 L-6,-22 L-6,-6 L-22,-6 Z" fill="url(#indigoGrad)" />
-    <path d="M6,6 L22,6 L22,22 L6,22 Z" fill="url(#indigoGrad)" />
-    
-    <!-- Diagonal golden link beam -->
-    <path d="M-14,-14 L14,14" stroke="url(#goldGrad)" stroke-width="6" stroke-linecap="round" />
-    
-    <!-- Golden highlight structural blocks -->
-    <path d="M6,-22 L22,-22 L22,-6 L6,-6 Z" fill="url(#goldGrad)" />
-    <path d="M-22,6 L-6,6 L-6,22 L-22,22 Z" fill="url(#goldGrad)" />
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="25" fill="#0f172a"/>
+  <path d="M 50,12 L 66,28 L 50,44 L 34,28 Z" fill="#38bdf8" />
+  <path d="M 32,30 L 48,46 L 32,62 L 16,46 Z" fill="#ffffff" />
+  <path d="M 68,30 L 84,46 L 68,62 L 52,46 Z" fill="#ffffff" />
+  <path d="M 50,48 L 66,64 L 50,80 L 34,64 Z" fill="#38bdf8" />
 </svg>

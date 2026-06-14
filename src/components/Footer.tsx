@@ -4,11 +4,24 @@ import translationData from '../data/translationData.json';
 
 interface FooterProps {
   currentLang: 'EN' | 'AR';
+  onPageChange?: (page: 'home' | 'about' | 'services' | 'blog' | 'contact') => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ currentLang }) => {
+export const Footer: React.FC<FooterProps> = ({ currentLang, onPageChange }) => {
   const langKey = currentLang.toLowerCase() as 'en' | 'ar';
   const { footerSections, contactInfo, socialLinks, copyright, backToTop } = translationData[langKey].navigation;
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    const pageName = href.replace('#/', '') as 'home' | 'about' | 'services' | 'blog' | 'contact';
+    if (onPageChange && ['home', 'about', 'services', 'blog', 'contact'].includes(pageName)) {
+      e.preventDefault();
+      onPageChange(pageName);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const renderSocialIcon = (iconName: string) => {
     switch (iconName) {
@@ -109,6 +122,7 @@ export const Footer: React.FC<FooterProps> = ({ currentLang }) => {
                   <li key={link.label}>
                     <a
                       href={link.href}
+                      onClick={(e) => handleLinkClick(e, link.href)}
                       className="text-xs font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors duration-250 flex items-center group"
                     >
                       <span className={`h-1.5 w-1.5 rounded-full bg-slate-800 group-hover:bg-[#38bdf8] transition-all duration-250 ${isRtl ? 'ml-2.5' : 'mr-2.5'}`} />

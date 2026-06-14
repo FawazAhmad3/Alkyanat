@@ -5,9 +5,11 @@ import translationData from '../data/translationData.json';
 interface HeaderProps {
   currentLang: 'EN' | 'AR';
   onLangChange: (lang: 'EN' | 'AR') => void;
+  activePage?: 'home' | 'about' | 'services' | 'blog' | 'contact';
+  onPageChange?: (page: 'home' | 'about' | 'services' | 'blog' | 'contact') => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ currentLang, onLangChange }) => {
+export const Header: React.FC<HeaderProps> = ({ currentLang, onLangChange, activePage = 'home', onPageChange }) => {
   const langKey = currentLang.toLowerCase() as 'en' | 'ar';
   const { headerLinks, ctaBtn } = translationData[langKey].navigation;
   const [isOpen, setIsOpen] = useState(false);
@@ -24,18 +26,12 @@ export const Header: React.FC<HeaderProps> = ({ currentLang, onLangChange }) => 
   }, [isOpen]);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
     setIsOpen(false);
-    const targetId = href.replace('#', '');
-    const element = document.getElementById(targetId);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+    const pageName = href.replace('#/', '') as 'home' | 'about' | 'services' | 'blog' | 'contact';
+    
+    if (onPageChange && ['home', 'about', 'services', 'blog', 'contact'].includes(pageName)) {
+      e.preventDefault();
+      onPageChange(pageName);
     }
   };
 
@@ -48,8 +44,8 @@ export const Header: React.FC<HeaderProps> = ({ currentLang, onLangChange }) => 
           
           {/* Logo Group */}
           <a
-            href="#home"
-            onClick={(e) => handleLinkClick(e, '#home')}
+            href="#/home"
+            onClick={(e) => handleLinkClick(e, '#/home')}
             className={`flex items-center gap-3.5 group relative z-50 ${isRtl ? 'space-x-reverse' : ''}`}
           >
             {/* Inline Interlocking Diamonds SVG Logo */}
@@ -78,17 +74,25 @@ export const Header: React.FC<HeaderProps> = ({ currentLang, onLangChange }) => 
 
           {/* Navigation Links */}
           <nav className={`hidden md:flex items-center gap-8 ${isRtl ? 'flex-row-reverse' : ''}`}>
-            {headerLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => handleLinkClick(e, link.href)}
-                className="text-xs font-black uppercase tracking-widest text-white/95 hover:text-[#38bdf8] transition-colors relative py-2 group"
-              >
-                {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#38bdf8] transition-all duration-300 group-hover:w-full" />
-              </a>
-            ))}
+            {headerLinks.map((link) => {
+              const pageName = link.href.replace('#/', '') as 'home' | 'about' | 'services' | 'blog' | 'contact';
+              const isActive = activePage === pageName;
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => handleLinkClick(e, link.href)}
+                  className={`text-xs font-black uppercase tracking-widest transition-colors relative py-2 group ${
+                    isActive ? 'text-[#38bdf8]' : 'text-white/95 hover:text-[#38bdf8]'
+                  }`}
+                >
+                  {link.label}
+                  <span className={`absolute bottom-0 left-0 h-0.5 bg-[#38bdf8] transition-all duration-300 ${
+                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`} />
+                </a>
+              );
+            })}
           </nav>
 
           {/* Action button */}
@@ -103,8 +107,8 @@ export const Header: React.FC<HeaderProps> = ({ currentLang, onLangChange }) => 
             </button>
 
             <a
-              href="#contact"
-              onClick={(e) => handleLinkClick(e, '#contact')}
+              href="#/contact"
+              onClick={(e) => handleLinkClick(e, '#/contact')}
               className="inline-flex items-center justify-center px-6 py-3 text-xs font-black uppercase tracking-widest rounded-lg text-slate-950 bg-[#38bdf8] hover:bg-[#0ea5e9] shadow-md transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
             >
               <span>{ctaBtn}</span>
@@ -140,23 +144,27 @@ export const Header: React.FC<HeaderProps> = ({ currentLang, onLangChange }) => 
       >
         <div className="flex flex-col h-full justify-between pt-32 pb-16 px-8 relative z-50">
           <nav className="flex flex-col space-y-6">
-            {headerLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => handleLinkClick(e, link.href)}
-                className={`text-xl font-black uppercase tracking-wider text-white hover:text-[#38bdf8] transition-all duration-200 border-b border-white/10 pb-3.5 ${
-                  isRtl ? 'text-right' : 'text-left'
-                }`}
-              >
-                {link.label}
-              </a>
-            ))}
+            {headerLinks.map((link) => {
+              const pageName = link.href.replace('#/', '') as 'home' | 'about' | 'services' | 'blog' | 'contact';
+              const isActive = activePage === pageName;
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => handleLinkClick(e, link.href)}
+                  className={`text-xl font-black uppercase tracking-wider transition-all duration-200 border-b border-white/10 pb-3.5 ${
+                    isActive ? 'text-[#38bdf8]' : 'text-white hover:text-[#38bdf8]'
+                  } ${isRtl ? 'text-right' : 'text-left'}`}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
           </nav>
 
           <a
-            href="#contact"
-            onClick={(e) => handleLinkClick(e, '#contact')}
+            href="#/contact"
+            onClick={(e) => handleLinkClick(e, '#/contact')}
             className="block w-full text-center px-6 py-4 text-xs font-black uppercase tracking-widest rounded-lg text-slate-950 bg-[#38bdf8] hover:bg-[#0ea5e9] transition-all duration-300"
           >
             {ctaBtn}

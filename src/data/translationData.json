@@ -6,20 +6,21 @@
         "subtitle": "Holding Group"
       },
       "headerLinks": [
-        { "label": "Home", "href": "#home" },
-        { "label": "Our Entities", "href": "#entities" },
-        { "label": "Group Performance", "href": "#stats" },
-        { "label": "Our Pillars", "href": "#pillars" },
-        { "label": "Contact Us", "href": "#contact" }
+        { "label": "Home", "href": "#/home" },
+        { "label": "About", "href": "#/about" },
+        { "label": "Services", "href": "#/services" },
+        { "label": "Blog", "href": "#/blog" },
+        { "label": "Contact", "href": "#/contact" }
       ],
       "footerSections": [
         {
           "title": "Navigation",
           "links": [
-            { "label": "Home", "href": "#home" },
-            { "label": "Our Entities", "href": "#entities" },
-            { "label": "Group Performance", "href": "#stats" },
-            { "label": "Our Pillars", "href": "#pillars" }
+            { "label": "Home", "href": "#/home" },
+            { "label": "About", "href": "#/about" },
+            { "label": "Services", "href": "#/services" },
+            { "label": "Blog", "href": "#/blog" },
+            { "label": "Contact", "href": "#/contact" }
           ]
         }
       ],
@@ -184,6 +185,47 @@
           { "id": "general", "label": "General Group Inquiry" }
         ]
       }
+    },
+    "aboutPage": {
+      "title": "Who We Are",
+      "subtitle": "Al Kayanat Holding Group is a cornerstone of Saudi Arabia's industrial transformation, powering infrastructure, logistics, real estate development, and technological ventures.",
+      "storyTitle": "Our Journey",
+      "storyText": "Founded with a vision to streamline and empower key industrial sectors in the Kingdom, Al Kayanat has grown from a single fleet operations provider into a multi-sector holding group. Today, we manage and nurture leading subsidiaries that build, move, develop, and digitize the national economy.",
+      "visionTitle": "Our Vision",
+      "visionText": "To be the premier partner in Saudi Arabia's infrastructure expansion, driving operational excellence and sustainable growth in line with Vision 2030.",
+      "missionTitle": "Our Mission",
+      "missionText": "To support and empower our subsidiaries through strategic capital, shared innovation, and robust management practices, delivering unmatched value to our clients and partners."
+    },
+    "blogPage": {
+      "title": "Corporate News & Insights",
+      "subtitle": "Stay updated with Al Kayanat's latest announcements, industry insights, and developmental updates across KSA.",
+      "readMore": "Read Article",
+      "posts": [
+        {
+          "id": 1,
+          "title": "Al Kayanat Fleet Expands to Support NEOM Infrastructure",
+          "excerpt": "Our Heavy Equipment division has deployed an additional 120 units to accelerate land clearing and support development phases in NEOM.",
+          "date": "June 12, 2026",
+          "readTime": "4 min read",
+          "category": "Infrastructure"
+        },
+        {
+          "id": 2,
+          "title": "Smart Logistics: Optimizing Distribution Routes Across KSA",
+          "excerpt": "How our Logistics division is incorporating AI-driven routing to reduce emissions by 15% and guarantee 99.9% delivery punctuality.",
+          "date": "June 08, 2026",
+          "readTime": "5 min read",
+          "category": "Technology"
+        },
+        {
+          "id": 3,
+          "title": "Green Building: Incorporating Eco-Friendly Standards in Riyadh Real Estate",
+          "excerpt": "Al Kayanat Real Estate announces the adoption of LEED certification standards for all upcoming commercial developments in Riyadh.",
+          "date": "May 28, 2026",
+          "readTime": "6 min read",
+          "category": "Sustainability"
+        }
+      ]
     }
   },
   "ar": {
@@ -193,20 +235,21 @@
         "subtitle": "مجموعة قابضة"
       },
       "headerLinks": [
-        { "label": "الرئيسية", "href": "#home" },
-        { "label": "كياناتنا", "href": "#entities" },
-        { "label": "الأداء العام", "href": "#stats" },
-        { "label": "ركائزنا", "href": "#pillars" },
-        { "label": "اتصل بنا", "href": "#contact" }
+        { "label": "الرئيسية", "href": "#/home" },
+        { "label": "من نحن", "href": "#/about" },
+        { "label": "الخدمات", "href": "#/services" },
+        { "label": "المدونة", "href": "#/blog" },
+        { "label": "اتصل بنا", "href": "#/contact" }
       ],
       "footerSections": [
         {
           "title": "خريطة الموقع",
           "links": [
-            { "label": "الرئيسية", "href": "#home" },
-            { "label": "كياناتنا", "href": "#entities" },
-            { "label": "الأداء العام", "href": "#stats" },
-            { "label": "ركائزنا", "href": "#pillars" }
+            { "label": "الرئيسية", "href": "#/home" },
+            { "label": "من نحن", "href": "#/about" },
+            { "label": "الخدمات", "href": "#/services" },
+            { "label": "المدونة", "href": "#/blog" },
+            { "label": "اتصل بنا", "href": "#/contact" }
           ]
         }
       ],
@@ -398,6 +441,47 @@
           { "id": "general", "label": "استفسار عام عن المجموعة" }
         ]
       }
+    },
+    "aboutPage": {
+      "title": "من نحن",
+      "subtitle": "مجموعة الكيانات القابضة هي حجر الأساس للتحول الصناعي في المملكة العربية السعودية، حيث تدعم مشاريع البنية التحتية، واللوجستيات، والتطوير العقاري، والاستثمارات التقنية.",
+      "storyTitle": "مسيرتنا",
+      "storyText": "تأسست مجموعة الكيانات برؤية واضحة لتمكين وتطوير القطاعات الصناعية الحيوية في المملكة. وننمو من مزود خدمات أسطول منفرد إلى تكتل متعدد الكيانات يدير ويحتضن شركات رائدة تبني وتنقل وتطور وتؤتمت الاقتصاد الوطني.",
+      "visionTitle": "رؤيتنا",
+      "visionText": "أن نكون الشريك الرائد في توسع البنية التحتية في المملكة، مكرسين التميز التشغيلي والنمو المستدام بما يتماشى مع رؤية المملكة ٢٠٣٠.",
+      "missionTitle": "رسالتنا",
+      "missionText": "تمكين ودعم شركاتنا التابعة من خلال التمويل الاستراتيجي، والابتكار المشترك، والممارسات الإدارية الراسخة، لتقديم قيمة لا مثيل لها لعملائنا وشركائنا."
+    },
+    "blogPage": {
+      "title": "أخبار وآراء المجموعة",
+      "subtitle": "ابقَ على اطلاع بأحدث إعلانات مجموعة الكيانات، وآراء الخبراء في الصناعة، وآخر مستجدات التنمية في المملكة.",
+      "readMore": "اقرأ المقال",
+      "posts": [
+        {
+          "id": 1,
+          "title": "توسيع أسطول الكيانات لدعم مشاريع البنية التحتية في نيوم",
+          "excerpt": "قام قسم المعدات الثقيلة لدينا بنشر ١٢٠ آلية إضافية لتسريع عمليات تمهيد الأراضي ودعم مراحل التطوير المتسارعة في نيوم.",
+          "date": "١٢ يونيو ٢٠٢٦",
+          "readTime": "٤ دقائق للقراءة",
+          "category": "البنية التحتية"
+        },
+        {
+          "id": 2,
+          "title": "اللوجستيات الذكية: تحسين مسارات التوزيع في جميع أنحاء المملكة",
+          "excerpt": "كيف يدمج قسم الخدمات اللوجستية لدينا خوارزميات الذكاء الاصطناعي لتقليل الانبعاثات بنسبة ١٥٪ وضمان تسليم دقيق بنسبة ٩٩.٩٪.",
+          "date": "٠٨ يونيو ٢٠٢٦",
+          "readTime": "٥ دقائق للقراءة",
+          "category": "التقنية والابتكار"
+        },
+        {
+          "id": 3,
+          "title": "المباني الخضراء: اعتماد معايير صديقة للبيئة في عقارات الرياض",
+          "excerpt": "تعلن شركة الكيانات العقارية عن اعتماد معايير شهادة LEED البيئية لجميع المشاريع التجارية المستقبلية في الرياض.",
+          "date": "٢٨ مايو ٢٠٢٦",
+          "readTime": "٦ دقائق للقراءة",
+          "category": "الاستدامة"
+        }
+      ]
     }
   }
 }

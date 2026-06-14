@@ -64,6 +64,40 @@ export const Home: React.FC<HomeProps> = ({ currentLang, onLangChange, onPageCha
     return () => clearInterval(timer);
   }, [data.testimonials.items.length]);
 
+  // Scroll Animations intersection observer states
+  const [journeyVisible, setJourneyVisible] = useState(false);
+  const [expertiseVisible, setExpertiseVisible] = useState(false);
+
+  useEffect(() => {
+    const journeyEl = document.getElementById('journey-section');
+    const expertiseEl = document.getElementById('expertise-section');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.target.id === 'journey-section' && entry.isIntersecting) {
+          setJourneyVisible(true);
+        }
+        if (entry.target.id === 'expertise-section' && entry.isIntersecting) {
+          setExpertiseVisible(true);
+        }
+      });
+    }, observerOptions);
+
+    if (journeyEl) observer.observe(journeyEl);
+    if (expertiseEl) observer.observe(expertiseEl);
+
+    return () => {
+      if (journeyEl) observer.unobserve(journeyEl);
+      if (expertiseEl) observer.unobserve(expertiseEl);
+    };
+  }, []);
+
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, href: string) => {
     const pageName = href.replace('#/', '') as 'home' | 'about' | 'services' | 'blog' | 'contact';
     if (onPageChange && ['home', 'about', 'services', 'blog', 'contact'].includes(pageName)) {
@@ -376,12 +410,18 @@ export const Home: React.FC<HomeProps> = ({ currentLang, onLangChange, onPageCha
         </section>
 
         {/* Section 5: Experience / Our Professional Journey Timeline */}
-        <section className="py-24 bg-brand-bg-lighter/30 border-b border-zinc-150">
+        <section id="journey-section" className="py-24 bg-brand-bg-lighter/30 border-b border-zinc-150">
           <div className="max-w-7xl mx-auto px-6">
             <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-start ${isRtl ? 'lg:flex-row-reverse' : ''}`}>
               
-              {/* Left Column (Section Heading) */}
-              <div className="lg:col-span-5 flex flex-col space-y-4">
+              {/* Left Column (Section Heading with Animation) */}
+              <div 
+                className={`lg:col-span-5 flex flex-col space-y-4 transition-all duration-1000 ease-out transform ${
+                  journeyVisible 
+                    ? 'opacity-100 translate-x-0' 
+                    : 'opacity-0 -translate-x-12 pointer-events-none'
+                }`}
+              >
                 <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-white border border-zinc-200 px-4 py-1.5 rounded-full w-fit shadow-sm">
                   {data.journey.subtitle}
                 </span>
@@ -391,31 +431,48 @@ export const Home: React.FC<HomeProps> = ({ currentLang, onLangChange, onPageCha
                 <div className="w-16 h-1 bg-brand-blue rounded-full mt-2" />
               </div>
 
-              {/* Right Column (Vertical Timeline) */}
+              {/* Right Column (Vertical Timeline with Scroll Reveal Animations) */}
               <div className="lg:col-span-7 flex flex-col space-y-2">
-                {data.journey.items.map((item, idx) => (
-                  <div key={idx} className={`flex gap-6 relative group ${isRtl ? 'flex-row-reverse text-right' : 'text-left'}`}>
-                    {/* Vertical connecting line */}
-                    {idx < data.journey.items.length - 1 && (
-                      <div className={`absolute ${isRtl ? 'right-6' : 'left-6'} top-12 bottom-0 w-0.5 bg-zinc-200 group-hover:bg-brand-blue/30 transition-colors`} />
-                    )}
-                    
-                    {/* Circular Step Badge */}
-                    <div className="flex-shrink-0 h-12 w-12 rounded-full bg-white text-brand-blue border border-zinc-200 font-extrabold text-sm flex items-center justify-center z-10 group-hover:bg-brand-blue group-hover:text-white group-hover:border-brand-blue shadow-sm transition-all duration-300">
-                      {`0${idx + 1}`}
+                {data.journey.items.map((item, idx) => {
+                  // Staggered delays
+                  const delayClass = [
+                    'delay-[100ms]',
+                    'delay-[300ms]',
+                    'delay-[500ms]',
+                    'delay-[700ms]'
+                  ][idx] || 'delay-0';
+
+                  return (
+                    <div 
+                      key={idx} 
+                      className={`flex gap-6 relative group transition-all duration-700 ease-out transform ${
+                        journeyVisible 
+                          ? 'opacity-100 translate-y-0' 
+                          : 'opacity-0 translate-y-8 pointer-events-none'
+                      } ${delayClass} ${isRtl ? 'flex-row-reverse text-right' : 'text-left'}`}
+                    >
+                      {/* Vertical connecting line */}
+                      {idx < data.journey.items.length - 1 && (
+                        <div className={`absolute ${isRtl ? 'right-6' : 'left-6'} top-12 bottom-0 w-0.5 bg-zinc-200 group-hover:bg-brand-blue/30 transition-colors`} />
+                      )}
+                      
+                      {/* Circular Step Badge */}
+                      <div className="flex-shrink-0 h-12 w-12 rounded-full bg-white text-brand-blue border border-zinc-200 font-extrabold text-sm flex items-center justify-center z-10 group-hover:bg-brand-blue group-hover:text-white group-hover:border-brand-blue shadow-sm transition-all duration-300">
+                        {`0${idx + 1}`}
+                      </div>
+                      
+                      {/* Item Details */}
+                      <div className="space-y-2 pb-8">
+                        <h4 className="text-lg font-bold text-brand-navy group-hover:text-brand-blue transition-colors duration-250">
+                          {item.title}
+                        </h4>
+                        <p className="text-xs md:text-sm text-slate-500 font-semibold leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
                     </div>
-                    
-                    {/* Item Details */}
-                    <div className="space-y-2 pb-8">
-                      <h4 className="text-lg font-bold text-brand-navy group-hover:text-brand-blue transition-colors duration-250">
-                        {item.title}
-                      </h4>
-                      <p className="text-xs md:text-sm text-slate-500 font-semibold leading-relaxed">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
 
             </div>
@@ -423,12 +480,18 @@ export const Home: React.FC<HomeProps> = ({ currentLang, onLangChange, onPageCha
         </section>
 
         {/* Section 6: Our Expertise progress bars */}
-        <section className="py-24 bg-white border-b border-zinc-150">
+        <section id="expertise-section" className="py-24 bg-white border-b border-zinc-150">
           <div className="max-w-7xl mx-auto px-6">
             <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-center ${isRtl ? 'lg:flex-row-reverse' : ''}`}>
               
-              {/* Left Column (Details) */}
-              <div className="lg:col-span-5 flex flex-col space-y-4">
+              {/* Left Column (Details with Animation) */}
+              <div 
+                className={`lg:col-span-5 flex flex-col space-y-4 transition-all duration-1000 ease-out transform ${
+                  expertiseVisible 
+                    ? 'opacity-100 translate-x-0' 
+                    : 'opacity-0 -translate-x-12 pointer-events-none'
+                }`}
+              >
                 <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-brand-bg-light px-3.5 py-1.5 rounded-lg w-fit">
                   {data.expertise.subtitle}
                 </span>
@@ -442,7 +505,7 @@ export const Home: React.FC<HomeProps> = ({ currentLang, onLangChange, onPageCha
                 </p>
               </div>
 
-              {/* Right Column (Progress Bars at 100% capacity) */}
+              {/* Right Column (Progress Bars at 100% capacity with Dynamic Loading Animations) */}
               <div className="lg:col-span-7 flex flex-col space-y-6">
                 {data.expertise.items.map((item, index) => (
                   <div key={index} className="space-y-2">
@@ -452,8 +515,8 @@ export const Home: React.FC<HomeProps> = ({ currentLang, onLangChange, onPageCha
                     </div>
                     <div className="h-2.5 w-full bg-slate-100 rounded-full overflow-hidden">
                       <div 
-                        className="h-full bg-brand-blue rounded-full transition-all duration-1000 ease-out" 
-                        style={{ width: `${item.value}%` }} 
+                        className="h-full bg-brand-blue rounded-full transition-all duration-[1200ms] cubic-bezier(0.1, 0.8, 0.2, 1)" 
+                        style={{ width: expertiseVisible ? `${item.value}%` : '0%' }} 
                       />
                     </div>
                   </div>
@@ -468,7 +531,7 @@ export const Home: React.FC<HomeProps> = ({ currentLang, onLangChange, onPageCha
         <section className="py-24 bg-brand-bg-lighter/40 border-b border-zinc-150">
           <div className="max-w-7xl mx-auto px-6">
             
-            <div className="text-center max-w-2xl mx-auto mb-12 space-y-4">
+            <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
               <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-white border border-zinc-200 px-3 py-1.5 rounded-lg shadow-sm">
                 {data.testimonials.subtitle}
               </span>

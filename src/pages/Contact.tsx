@@ -59,7 +59,7 @@ export const Contact: React.FC<ContactProps> = ({ currentLang, onLangChange, onP
       <Header currentLang={currentLang} onLangChange={onLangChange} activePage="contact" onPageChange={onPageChange} />
 
       {/* Main Content */}
-      <main className="flex-grow pt-[104px]">
+      <main className="flex-grow pt-[88px]">
         
         {/* Breadcrumb Header Banner (Light Blue/Ice-Blue Theme) */}
         <section className="bg-brand-bg-light text-brand-navy py-16 md:py-20 relative overflow-hidden border-b border-brand-bg-light/80">

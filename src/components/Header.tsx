@@ -55,10 +55,10 @@ export const Header: React.FC<HeaderProps> = ({ currentLang, onLangChange, activ
   const isRtl = currentLang === 'AR';
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+    <header className={`fixed top-0 w-full z-50 transition-all duration-350 ${
       isScrolled 
-        ? 'bg-white/95 backdrop-blur-md py-3 border-b border-zinc-200/80 shadow-md' 
-        : 'bg-transparent py-5 border-b border-transparent'
+        ? 'bg-white/95 backdrop-blur-md py-2 border-b border-zinc-200/80 shadow-md' 
+        : 'bg-transparent py-3.5 border-b border-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-6">
         <div className={`flex items-center justify-between h-16 ${isRtl ? 'flex-row-reverse' : ''}`}>
@@ -67,7 +67,7 @@ export const Header: React.FC<HeaderProps> = ({ currentLang, onLangChange, activ
           <a
             href="#/home"
             onClick={(e) => handleLinkClick(e, '#/home')}
-            className={`flex items-center gap-3 group relative z-50 ${isRtl ? 'flex-row-reverse' : ''}`}
+            className={`flex items-center gap-2.5 group relative z-50 ${isRtl ? 'flex-row-reverse' : ''}`}
           >
             {/* Inline Interlocking Diamonds SVG Logo */}
             <div className="p-1.5 bg-white border border-zinc-150 group-hover:border-brand-blue rounded-2xl transition-all duration-300 shadow-sm">
@@ -94,7 +94,7 @@ export const Header: React.FC<HeaderProps> = ({ currentLang, onLangChange, activ
           </a>
  
           {/* Desktop Navigation Menu Links */}
-          <nav className={`hidden md:flex items-center gap-8 ${isRtl ? 'flex-row-reverse' : ''}`}>
+          <nav className={`hidden md:flex items-center gap-6 ${isRtl ? 'flex-row-reverse' : ''}`}>
             {data.headerLinks.map((link) => {
               const pageName = link.href.replace('#/', '') as 'home' | 'about' | 'services' | 'blog' | 'contact';
               const isActive = activePage === pageName;
@@ -163,7 +163,7 @@ export const Header: React.FC<HeaderProps> = ({ currentLang, onLangChange, activ
           </nav>
  
           {/* Action Button & Language Switcher */}
-          <div className={`hidden md:flex items-center gap-4 ${isRtl ? 'flex-row-reverse' : ''}`}>
+          <div className={`hidden md:flex items-center gap-3.5 ${isRtl ? 'flex-row-reverse' : ''}`}>
             {/* Language Switcher */}
             <button
               onClick={() => onLangChange(currentLang === 'EN' ? 'AR' : 'EN')}

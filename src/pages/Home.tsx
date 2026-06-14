@@ -139,7 +139,7 @@ export const Home: React.FC<HomeProps> = ({ currentLang, onLangChange, onPageCha
   };
 
   return (
-    <div className={`min-h-screen bg-white text-zinc-650 flex flex-col justify-between font-sans overflow-x-hidden ${isRtl ? 'text-right' : 'text-left'}`}>
+    <div className={`min-h-screen bg-gradient-to-b from-brand-bg-lighter via-white to-brand-bg-light/35 text-zinc-650 flex flex-col justify-between font-sans overflow-x-hidden ${isRtl ? 'text-right' : 'text-left'}`}>
       
       {/* Header */}
       <Header currentLang={currentLang} onLangChange={onLangChange} activePage="home" onPageChange={onPageChange} />
@@ -279,7 +279,7 @@ export const Home: React.FC<HomeProps> = ({ currentLang, onLangChange, onPageCha
         </section>
 
         {/* Section 2: Core Strengths (3 columns - py-14) */}
-        <section className="py-14 bg-white border-b border-zinc-150">
+        <section className="py-14 bg-transparent border-b border-zinc-150/80">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {data.strengths.map((item, index) => (
@@ -304,7 +304,7 @@ export const Home: React.FC<HomeProps> = ({ currentLang, onLangChange, onPageCha
         </section>
 
         {/* Section 3: About Holding Group (Side-by-side - py-16) */}
-        <section className="py-16 bg-white border-b border-zinc-150">
+        <section className="py-16 bg-transparent border-b border-zinc-150/80">
           <div className="max-w-7xl mx-auto px-6">
             <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-center ${isRtl ? 'lg:flex-row-reverse' : ''}`}>
               
@@ -355,7 +355,7 @@ export const Home: React.FC<HomeProps> = ({ currentLang, onLangChange, onPageCha
         </section>
 
         {/* Section 4: Services Offered (py-16) */}
-        <section className="py-16 bg-brand-bg-lighter/40 border-b border-zinc-150">
+        <section className="py-16 bg-transparent border-b border-zinc-150/80">
           <div className="max-w-7xl mx-auto px-6">
             
             <div className="text-center max-w-2xl mx-auto mb-10 space-y-4">
@@ -410,7 +410,7 @@ export const Home: React.FC<HomeProps> = ({ currentLang, onLangChange, onPageCha
         </section>
 
         {/* Section 5: Experience / Our Professional Journey Timeline (py-16) */}
-        <section id="journey-section" className="py-16 bg-brand-bg-lighter/30 border-b border-zinc-150">
+        <section id="journey-section" className="py-16 bg-transparent border-b border-zinc-150/80">
           <div className="max-w-7xl mx-auto px-6">
             <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-start ${isRtl ? 'lg:flex-row-reverse' : ''}`}>
               
@@ -480,7 +480,7 @@ export const Home: React.FC<HomeProps> = ({ currentLang, onLangChange, onPageCha
         </section>
 
         {/* Section 6: Our Expertise progress bars (py-16) */}
-        <section id="expertise-section" className="py-16 bg-white border-b border-zinc-150">
+        <section id="expertise-section" className="py-16 bg-transparent border-b border-zinc-150/80">
           <div className="max-w-7xl mx-auto px-6">
             <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-center ${isRtl ? 'lg:flex-row-reverse' : ''}`}>
               
@@ -528,7 +528,7 @@ export const Home: React.FC<HomeProps> = ({ currentLang, onLangChange, onPageCha
         </section>
 
         {/* Section 7: Testimonials Slider (py-16) */}
-        <section className="py-16 bg-brand-bg-lighter/40 border-b border-zinc-150">
+        <section className="py-16 bg-transparent border-b border-zinc-150/80">
           <div className="max-w-7xl mx-auto px-6">
             
             <div className="text-center max-w-2xl mx-auto mb-12 space-y-4">

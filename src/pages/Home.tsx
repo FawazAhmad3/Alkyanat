@@ -54,6 +54,16 @@ export const Home: React.FC<HomeProps> = ({ currentLang, onLangChange, onPageCha
     return () => clearInterval(timer);
   }, [heroImages.length]);
 
+  // Testimonial Carousel State
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveTestimonial((prev) => (prev + 1) % data.testimonials.items.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [data.testimonials.items.length]);
+
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, href: string) => {
     const pageName = href.replace('#/', '') as 'home' | 'about' | 'services' | 'blog' | 'contact';
     if (onPageChange && ['home', 'about', 'services', 'blog', 'contact'].includes(pageName)) {
@@ -360,6 +370,151 @@ export const Home: React.FC<HomeProps> = ({ currentLang, onLangChange, onPageCha
                   </button>
                 </div>
               ))}
+            </div>
+
+          </div>
+        </section>
+
+        {/* Section 5: Experience / Our Professional Journey Timeline */}
+        <section className="py-24 bg-brand-bg-lighter/30 border-b border-zinc-150">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-start ${isRtl ? 'lg:flex-row-reverse' : ''}`}>
+              
+              {/* Left Column (Section Heading) */}
+              <div className="lg:col-span-5 flex flex-col space-y-4">
+                <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-white border border-zinc-200 px-4 py-1.5 rounded-full w-fit shadow-sm">
+                  {data.journey.subtitle}
+                </span>
+                <h2 className="text-2xl md:text-4xl font-extrabold text-brand-navy tracking-tight leading-tight">
+                  {data.journey.title}
+                </h2>
+                <div className="w-16 h-1 bg-brand-blue rounded-full mt-2" />
+              </div>
+
+              {/* Right Column (Vertical Timeline) */}
+              <div className="lg:col-span-7 flex flex-col space-y-2">
+                {data.journey.items.map((item, idx) => (
+                  <div key={idx} className={`flex gap-6 relative group ${isRtl ? 'flex-row-reverse text-right' : 'text-left'}`}>
+                    {/* Vertical connecting line */}
+                    {idx < data.journey.items.length - 1 && (
+                      <div className={`absolute ${isRtl ? 'right-6' : 'left-6'} top-12 bottom-0 w-0.5 bg-zinc-200 group-hover:bg-brand-blue/30 transition-colors`} />
+                    )}
+                    
+                    {/* Circular Step Badge */}
+                    <div className="flex-shrink-0 h-12 w-12 rounded-full bg-white text-brand-blue border border-zinc-200 font-extrabold text-sm flex items-center justify-center z-10 group-hover:bg-brand-blue group-hover:text-white group-hover:border-brand-blue shadow-sm transition-all duration-300">
+                      {`0${idx + 1}`}
+                    </div>
+                    
+                    {/* Item Details */}
+                    <div className="space-y-2 pb-8">
+                      <h4 className="text-lg font-bold text-brand-navy group-hover:text-brand-blue transition-colors duration-250">
+                        {item.title}
+                      </h4>
+                      <p className="text-xs md:text-sm text-slate-500 font-semibold leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* Section 6: Our Expertise progress bars */}
+        <section className="py-24 bg-white border-b border-zinc-150">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-center ${isRtl ? 'lg:flex-row-reverse' : ''}`}>
+              
+              {/* Left Column (Details) */}
+              <div className="lg:col-span-5 flex flex-col space-y-4">
+                <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-brand-bg-light px-3.5 py-1.5 rounded-lg w-fit">
+                  {data.expertise.subtitle}
+                </span>
+                <h2 className="text-2xl md:text-4xl font-extrabold text-brand-navy tracking-tight leading-tight">
+                  {data.expertise.title}
+                </h2>
+                <p className="text-xs md:text-sm text-zinc-500 font-semibold leading-relaxed">
+                  {currentLang === 'AR' 
+                    ? 'نعمل باستمرار على تطوير قدراتنا الفنية لنقدم شاحنات نظافة متقدمة ورافعات ثقيلة للمشاريع البلدية والإعمار بالمملكة بمهنية وأمان.'
+                    : 'We continuously improve our technical capabilities and fleet systems to deliver reliable, high-capacity road cleaning, heavy lifting, and material dispatch solutions across KSA.'}
+                </p>
+              </div>
+
+              {/* Right Column (Progress Bars at 100% capacity) */}
+              <div className="lg:col-span-7 flex flex-col space-y-6">
+                {data.expertise.items.map((item, index) => (
+                  <div key={index} className="space-y-2">
+                    <div className={`flex justify-between text-xs font-extrabold text-brand-navy ${isRtl ? 'flex-row-reverse' : ''}`}>
+                      <span>{item.label}</span>
+                      <span>{item.value}%</span>
+                    </div>
+                    <div className="h-2.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-brand-blue rounded-full transition-all duration-1000 ease-out" 
+                        style={{ width: `${item.value}%` }} 
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* Section 7: Testimonials Slider */}
+        <section className="py-24 bg-brand-bg-lighter/40 border-b border-zinc-150">
+          <div className="max-w-7xl mx-auto px-6">
+            
+            <div className="text-center max-w-2xl mx-auto mb-12 space-y-4">
+              <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-white border border-zinc-200 px-3 py-1.5 rounded-lg shadow-sm">
+                {data.testimonials.subtitle}
+              </span>
+              <h2 className="text-2xl md:text-4xl font-extrabold text-brand-navy tracking-tight">
+                {data.testimonials.title}
+              </h2>
+            </div>
+
+            {/* Testimonials Slider Body */}
+            <div className="relative max-w-4xl mx-auto text-center px-6 mt-12 group">
+              <div className="text-6xl text-brand-blue/15 font-serif absolute -top-8 left-10 pointer-events-none">“</div>
+              
+              <div className="min-h-[140px] flex items-center justify-center">
+                {data.testimonials.items.map((item, idx) => (
+                  <div 
+                    key={idx}
+                    className={`transition-all duration-500 ease-in-out ${
+                      idx === activeTestimonial ? 'opacity-100 scale-100 block' : 'opacity-0 scale-95 hidden'
+                    }`}
+                  >
+                    <p className="text-base md:text-lg text-brand-navy/90 font-medium italic leading-relaxed">
+                      "{item.quote}"
+                    </p>
+                    <h4 className="text-sm font-extrabold text-brand-navy mt-6">
+                      {item.author}
+                    </h4>
+                    <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider block mt-1">
+                      {item.role}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Dots indicators */}
+              <div className="flex items-center justify-center gap-2 mt-8">
+                {data.testimonials.items.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveTestimonial(idx)}
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                      idx === activeTestimonial ? 'w-6 bg-brand-blue' : 'w-2 bg-zinc-300 hover:bg-zinc-400'
+                    }`}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
             </div>
 
           </div>

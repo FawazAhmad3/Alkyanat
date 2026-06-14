@@ -95,32 +95,60 @@
         }
       ]
     },
-    "leadForm": {
-      "subtitle": "Start a Project",
-      "title": "Request Fleet Inquiry",
-      "paragraph": "Submit your requirements, and our regional operations desk will dispatch quotation details within 24 hours.",
-      "nameLabel": "Your Full Name",
-      "emailLabel": "Email Address",
-      "phoneLabel": "Phone Number",
-      "selectLabel": "Select Equipment Type",
-      "messageLabel": "Project / Rental Details",
-      "placeholderName": "e.g. Abdullah Al-Fahd",
-      "placeholderEmail": "name@company.com",
-      "placeholderPhone": "+966 50 000 0000",
-      "placeholderMessage": "Specify tonnage, sweeper type, duration, and site location...",
-      "options": [
-        { "id": "elgin", "label": "Elgin Road Sweeper" },
-        { "id": "johnston", "label": "Johnston Road Sweeper" },
-        { "id": "scarab", "label": "ScaraB Road Sweeper" },
-        { "id": "gardens", "label": "Garden Sweepers" },
-        { "id": "boomtrucks", "label": "Boom Truck (10T / 12T / 15T)" },
-        { "id": "forklifts", "label": "Forklifts" },
-        { "id": "cranes", "label": "Cranes" },
-        { "id": "general", "label": "Other Heavy Vehicles" }
-      ],
-      "submitBtn": "Send Inquiry Request",
-      "success": "Inquiry sent successfully! Our operations desk will get in touch soon.",
-      "reset": "Send another inquiry"
+    "journey": {
+      "subtitle": "Experience",
+      "title": "Our Professional Journey",
+      "items": [
+        {
+          "title": "Road Sweeping Operations (Elgin, Johnston, ScaraB)",
+          "description": "Deploying advanced road sweeper trucks to clean public streets, highways, and residential districts across KSA."
+        },
+        {
+          "title": "Garden Sweeping & Public Park Maintenance",
+          "description": "Providing specialized compact sweeping machinery to keep public gardens, walks, and parks clean."
+        },
+        {
+          "title": "Heavy Lifting & Material Handling Fleet",
+          "description": "Operating high-capacity forklifts, mobile cranes, and versatile 10-15 Ton boom trucks."
+        },
+        {
+          "title": "Governmental & Corporate Site Support",
+          "description": "Supplying modern infrastructure construction vehicles and support machinery for large projects."
+        }
+      ]
+    },
+    "expertise": {
+      "subtitle": "Our Technical Capacities",
+      "title": "Operational Standards & Core Expertise",
+      "items": [
+        { "label": "Municipal Sweeping & Sanitation Contracts", "value": 100 },
+        { "label": "Heavy Crane & Lifting Operations", "value": 100 },
+        { "label": "Garden & Small Sweeping Projects", "value": 100 },
+        { "label": "Boom Truck Fleet Availability", "value": 100 },
+        { "label": "Forklift Operations & Warehouse Logistics", "value": 100 },
+        { "label": "Saudi Vision 2030 Project Compliance", "value": 100 }
+      ]
+    },
+    "testimonials": {
+      "subtitle": "Testimonials",
+      "title": "What Our Partners Say",
+      "items": [
+        {
+          "quote": "Al Kyanat KSA provided exceptional road sweeping truck fleet support for our municipal sanitation contracts in Riyadh. Their response time and operator skills were top-tier.",
+          "author": "Fahd bin Abdullah",
+          "role": "Municipal Project Director"
+        },
+        {
+          "quote": "The 12-ton and 15-ton boom trucks supplied by Al Kyanat were highly reliable. Their logistics crew ensured smooth material handling for our corporate construction project.",
+          "author": "Eng. Khalid Masry",
+          "role": "Civil Infrastructure Manager"
+        },
+        {
+          "quote": "Excellent crane and heavy equipment dispatch services. Their HSE compliance and zero-accident policy align perfectly with Saudi Aramco and national standards.",
+          "author": "Yousef Al-Harbi",
+          "role": "Site Operations Lead"
+        }
+      ]
     }
   },
   "ar": {
@@ -200,7 +228,7 @@
           "description": "شاحنات ذراع هيدروليكية بسعات 10 و12 و15 طنًا لتسهيل عمليات نقل البضائع، والخدمات اللوجستية، والتركيب."
         },
         {
-          "id": "الرافعات الشوكية",
+          "id": "forklifts",
           "title": "الرافعات الشوكية الصناعية",
           "category": "المناولة والرفع الهيدروليكي",
           "description": "رافعات شوكية بقدرات عالية تتراوح من 3 إلى 15 طنًا لمناولة الشحنات بالمستودعات والمواقع اللوجستية."
@@ -219,32 +247,60 @@
         }
       ]
     },
-    "leadForm": {
-      "subtitle": "ابدأ العمل معنا",
-      "title": "طلب استفسار عن الأسطول",
-      "paragraph": "سجل متطلبات مشروعك، وسيقوم مكتب العمليات الإقليمي التابع لنا بإرسال عرض الأسعار المناسب خلال ٢٤ ساعة.",
-      "nameLabel": "الاسم الكريم بالكامل",
-      "emailLabel": "البريد الإلكتروني",
-      "phoneLabel": "رقم الجوال",
-      "selectLabel": "اختر فئة الآلية المطلوبة",
-      "messageLabel": "تفاصيل المشروع / مدة الاستئجار",
-      "placeholderName": "مثال: عبد الله الفهد",
-      "placeholderEmail": "name@company.com",
-      "placeholderPhone": "+٩٦٦ ٥٠ ٠٠٠ ٠٠٠٠",
-      "placeholderMessage": "يرجى تحديد الحمولة المطلوبة، نوع الكناسة، مدة الإيجار وموقع العمل...",
-      "options": [
-        { "id": "elgin", "label": "كنّاسة طرق إلجين" },
-        { "id": "johnston", "label": "كنّاسة طرق جونستون" },
-        { "id": "scarab", "label": "كنّاسة طرق سكاراب" },
-        { "id": "gardens", "label": "كنّاسة حدائق" },
-        { "id": "boomtrucks", "label": "شاحنة بوم (10/12/15 طن)" },
-        { "id": "forklifts", "label": "رافعات شوكية" },
-        { "id": "cranes", "label": "رافعات إنشائية" },
-        { "id": "general", "label": "آليات ثقيلة أخرى" }
-      ],
-      "submitBtn": "إرسال طلب الاستفسار",
-      "success": "تم إرسال طلبك بنجاح! سيتواصل معك مكتب العمليات لدينا قريبًا.",
-      "reset": "إرسال طلب آخر"
+    "journey": {
+      "subtitle": "مسيرتنا المهنية",
+      "title": "خبراتنا الممتدة وإنجازاتنا",
+      "items": [
+        {
+          "title": "عمليات كنس الطرق (إلجين، جونستون، سكاراب)",
+          "description": "نشر كناسات شوارع متطورة لتنظيف الشوارع العامة والطرق السريعة والأحياء السكنية بالمملكة."
+        },
+        {
+          "title": "نظافة الحدائق العامة وتجميل المتنزهات",
+          "description": "توفير معدات كنس مدمجة ومتخصصة للحفاظ على نظافة الحدائق والمسارات والميادين العامة."
+        },
+        {
+          "title": "أسطول مناولة المواد والرفع الثقيل",
+          "description": "تشغيل رافعات شوكية بقدرات عالية، ورافعات متنقلة، وشاحنات بوم هيدروليكية بسعة ١٠-١٥ طناً."
+        },
+        {
+          "title": "دعم المشاريع الحكومية والشركات الكبرى",
+          "description": "تزويد مشاريع البنية التحتية بأحدث آليات البناء والآليات التشغيلية اللازمة للعمل."
+        }
+      ]
+    },
+    "expertise": {
+      "subtitle": "قدراتنا الفنية",
+      "title": "المعايير التشغيلية والخبرات الأساسية",
+      "items": [
+        { "label": "عقود النظافة وكنس الطرق البلدية", "value": 100 },
+        { "label": "عمليات الرافعات والرفع الثقيل", "value": 100 },
+        { "label": "مشاريع كنس وتجميل الحدائق العامة", "value": 100 },
+        { "label": "جاهزية أسطول شاحنات البوم الهيدروليكية", "value": 100 },
+        { "label": "تشغيل الرافعات الشوكية ودعم المستودعات", "value": 100 },
+        { "label": "التوافق مع متطلبات رؤية المملكة ٢٠٣٠", "value": 100 }
+      ]
+    },
+    "testimonials": {
+      "subtitle": "آراء شركائنا",
+      "title": "ماذا يقول شركاؤنا عن خدماتنا",
+      "items": [
+        {
+          "quote": "قدمت مجموعة الكيانات دعماً استثنائياً بأسطول كناسات الطرق لتنفيذ عقد النظافة البلدية بالرياض. كان وقت الاستجابة ومهارة المشغلين على أعلى مستوى.",
+          "author": "فهد بن عبد الله",
+          "role": "مدير مشروع بلدي"
+        },
+        {
+          "quote": "شاحنات البوم حمولة ١٢ و١٥ طناً الموردة من الكيانات كانت على درجة عالية من الاعتمادية. ساعدنا فريقهم اللوجستي في إتمام أعمال المناولة لمشروعنا الإنشائي بسلاسة.",
+          "author": "م. خالد مصري",
+          "role": "مدير مشاريع البنية التحتية"
+        },
+        {
+          "quote": "خدمة ممتازة في توفير الرافعات والمعدات الثقيلة. توافق معاييرهم للسلامة والصحة المهنية مع أرامكو السعودية والمعايير الوطنية مميز للغاية.",
+          "author": "يوسف الحربي",
+          "role": "رئيس العمليات الإنشائية"
+        }
+      ]
     }
   }
 }

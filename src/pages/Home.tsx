@@ -3,18 +3,17 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { 
   Shield, 
-  CheckCircle, 
-  ArrowRight,
+  ArrowUpRight,
   ChevronRight, 
-  Phone,
-  Mail,
-  MapPin,
   Truck,
   Sliders,
   Wrench,
   Building,
   Leaf,
-  Activity
+  Activity,
+  Phone,
+  Mail,
+  AlertTriangle
 } from 'lucide-react';
 import homeData from '../data/homeData.json';
 
@@ -40,36 +39,64 @@ export const Home: React.FC<HomeProps> = ({ currentLang, onLangChange, onPageCha
     return () => clearInterval(interval);
   }, [rotatorWords.length]);
 
-  // Lead Form States
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    equipment: 'elgin',
-    message: ''
-  });
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  // Hero Image Slider State
+  const heroImages = [
+    '/images/road_sweeper_riyadh.png',
+    '/images/boom_truck_crane.png',
+    '/images/heavy_forklift_ksa.png'
+  ];
+  const [activeImage, setActiveImage] = useState(0);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveImage((prev) => (prev + 1) % heroImages.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [heroImages.length]);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitted(true);
-  };
+  // Testimonial Carousel State
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
 
-  const handleReset = () => {
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      equipment: 'elgin',
-      message: ''
-    });
-    setIsSubmitted(false);
-  };
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveTestimonial((prev) => (prev + 1) % data.testimonials.items.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [data.testimonials.items.length]);
+
+  // Scroll Animations intersection observer states
+  const [journeyVisible, setJourneyVisible] = useState(false);
+  const [expertiseVisible, setExpertiseVisible] = useState(false);
+
+  useEffect(() => {
+    const journeyEl = document.getElementById('journey-section');
+    const expertiseEl = document.getElementById('expertise-section');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.target.id === 'journey-section' && entry.isIntersecting) {
+          setJourneyVisible(true);
+        }
+        if (entry.target.id === 'expertise-section' && entry.isIntersecting) {
+          setExpertiseVisible(true);
+        }
+      });
+    }, observerOptions);
+
+    if (journeyEl) observer.observe(journeyEl);
+    if (expertiseEl) observer.observe(expertiseEl);
+
+    return () => {
+      if (journeyEl) observer.unobserve(journeyEl);
+      if (expertiseEl) observer.unobserve(expertiseEl);
+    };
+  }, []);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, href: string) => {
     const pageName = href.replace('#/', '') as 'home' | 'about' | 'services' | 'blog' | 'contact';
@@ -120,10 +147,9 @@ export const Home: React.FC<HomeProps> = ({ currentLang, onLangChange, onPageCha
       {/* Main Content */}
       <main className="flex-grow pt-[104px]">
 
-        {/* Section 1: Hero Banner (Light theme soft ice-blue background) */}
-        <section className="relative bg-brand-bg-lighter text-zinc-850 py-24 lg:py-32 overflow-hidden border-b border-zinc-100">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e0e7ff_1px,transparent_1px),linear-gradient(to_bottom,#e0e7ff_1px,transparent_1px)] bg-[size:5rem_5rem] opacity-40 pointer-events-none" />
-          <div className="absolute -top-40 -right-40 w-96 h-96 bg-brand-blue/5 rounded-full blur-3xl" />
+        {/* Section 1: Hero Banner (Pastel Gradient Background & Circular Frame Cutout Slider) */}
+        <section className="relative bg-gradient-to-tr from-purple-100/30 via-yellow-100/20 to-teal-100/30 text-zinc-850 py-24 lg:py-32 overflow-hidden border-b border-zinc-100">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:5rem_5rem] opacity-30 pointer-events-none" />
           
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-center ${isRtl ? 'lg:flex-row-reverse' : ''}`}>
@@ -134,45 +160,118 @@ export const Home: React.FC<HomeProps> = ({ currentLang, onLangChange, onPageCha
                   {data.hero.subtitle}
                 </span>
 
-                <h1 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight leading-none text-brand-navy max-w-2xl">
-                  {data.hero.title} <br/>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-brand-navy max-w-2xl">
+                  {currentLang === 'AR' ? 'خبراء رياديون في' : 'Leading Experts in'}{' '}
                   <span className="text-brand-blue inline-block transition-all duration-300 transform translate-y-0 opacity-100 min-h-[48px] md:min-h-[60px] lg:min-h-[72px]">
                     {rotatorWords[rotatorIndex]}
                   </span>
                 </h1>
 
-                <p className="text-xs md:text-sm lg:text-base text-zinc-500 font-semibold leading-relaxed max-w-xl">
+                <p className="text-sm md:text-base text-slate-500 font-semibold leading-relaxed max-w-xl">
                   {data.hero.paragraph}
                 </p>
 
-                <div className={`flex flex-col sm:flex-row gap-4 pt-4 ${isRtl ? 'sm:flex-row-reverse' : ''}`}>
-                  <a
-                    href="#contact-form"
-                    className="inline-flex items-center justify-center px-8 py-4 text-xs font-black uppercase tracking-widest rounded-xl text-white bg-brand-blue hover:bg-brand-blue-hover shadow-lg shadow-brand-blue/15 hover:shadow-brand-blue/25 transition-all cursor-pointer"
+                <div className={`flex items-center gap-4 pt-4 ${isRtl ? 'flex-row-reverse' : ''}`}>
+                  <button
+                    onClick={(e) => handleLinkClick(e, '#/contact')}
+                    className="inline-flex items-center justify-center px-8 py-4 text-xs font-black uppercase tracking-widest rounded-full text-white bg-brand-blue hover:bg-brand-blue-hover shadow-lg shadow-brand-blue/15 hover:shadow-brand-blue/25 transition-all cursor-pointer gap-1.5"
                   >
-                    <span>{data.hero.cta}</span>
-                    <ArrowRight className={`ml-2 h-4 w-4 stroke-[3] ${isRtl ? 'rotate-180 mr-2 ml-0' : ''}`} />
+                    <span>{currentLang === 'AR' ? 'اتصل الآن' : 'Contact Now'}</span>
+                    <ArrowUpRight className="h-4 w-4 stroke-[2.5]" />
+                  </button>
+
+                  {/* Circle contact/social buttons */}
+                  <a 
+                    href="tel:+966114567890"
+                    className="p-3.5 bg-brand-bg-light hover:bg-brand-blue hover:text-white text-brand-blue rounded-full transition-all flex items-center justify-center border border-brand-bg-light shadow-sm"
+                    aria-label="Call Us"
+                  >
+                    <Phone className="h-4.5 w-4.5" />
+                  </a>
+                  <a 
+                    href="mailto:info@alkyanat.com"
+                    className="p-3.5 bg-brand-bg-light hover:bg-brand-blue hover:text-white text-brand-blue rounded-full transition-all flex items-center justify-center border border-brand-bg-light shadow-sm"
+                    aria-label="Email Us"
+                  >
+                    <Mail className="h-4.5 w-4.5" />
                   </a>
                 </div>
 
-                <div className={`flex items-center gap-3 pt-6 border-t border-zinc-200 max-w-lg ${isRtl ? 'flex-row-reverse text-right' : 'text-left'}`}>
-                  <span className="h-2 w-2 rounded-full bg-brand-blue animate-pulse shrink-0" />
-                  <p className="text-[10px] uppercase tracking-wider font-extrabold text-zinc-400">
-                    {data.hero.trustedLabel}
-                  </p>
+                {/* Overlapping Avatars "Trusted By" info */}
+                <div className={`flex items-center gap-4 pt-8 border-t border-zinc-200/80 max-w-lg ${isRtl ? 'flex-row-reverse text-right' : 'text-left'}`}>
+                  <div className={`flex overflow-hidden ${isRtl ? '-space-x-3 space-x-reverse' : '-space-x-3'}`}>
+                    <div className="inline-block h-9 w-9 rounded-full ring-2 ring-white bg-gradient-to-tr from-blue-400 to-indigo-500 flex items-center justify-center text-[10px] font-black text-white shadow-sm">K</div>
+                    <div className="inline-block h-9 w-9 rounded-full ring-2 ring-white bg-gradient-to-tr from-amber-400 to-orange-500 flex items-center justify-center text-[10px] font-black text-white shadow-sm">S</div>
+                    <div className="inline-block h-9 w-9 rounded-full ring-2 ring-white bg-gradient-to-tr from-emerald-400 to-teal-500 flex items-center justify-center text-[10px] font-black text-white shadow-sm">A</div>
+                    <div className="inline-block h-9 w-9 rounded-full ring-2 ring-white bg-gradient-to-tr from-rose-400 to-pink-500 flex items-center justify-center text-[10px] font-black text-white shadow-sm">2030</div>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-xs font-extrabold text-brand-navy">
+                      {currentLang === 'AR' ? 'موثوق من أكثر من ٥٠٠٠+' : 'Trusted By 5000+'}
+                    </span>
+                    <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">
+                      {currentLang === 'AR' ? 'شريك وعميل' : 'Brand & Customers'}
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              {/* Hero Right Column (Banner Image) */}
-              <div className="lg:col-span-5 flex justify-center">
-                <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden border border-zinc-200/80 shadow-2xl bg-white p-2.5">
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-bg-lighter/30 via-transparent to-transparent z-10" />
-                  <img 
-                    src="/images/machinery_banner.png" 
-                    alt="Al Kyanat KSA Fleet" 
-                    className="w-full h-full object-cover rounded-2xl opacity-95 hover:scale-102 transition-transform duration-500"
-                  />
+              {/* Hero Right Column (Circular Frame Cutout Image Slider) */}
+              <div className="lg:col-span-5 flex justify-center relative select-none">
+                
+                {/* Floating SVGs / Badges around the circle cutout */}
+                <div className="absolute top-10 left-4 bg-white/95 backdrop-blur border border-zinc-150 p-2.5 rounded-2xl shadow-lg z-20 animate-bounce duration-1000">
+                  <Activity className="h-6 w-6 text-brand-blue" />
                 </div>
+                <div className="absolute bottom-12 right-2 bg-white/95 backdrop-blur border border-zinc-150 p-2.5 rounded-2xl shadow-lg z-20">
+                  <AlertTriangle className="h-6 w-6 text-amber-500" />
+                </div>
+                <div className="absolute top-1/2 -right-6 bg-white/95 backdrop-blur border border-zinc-150 p-3 rounded-full shadow-lg z-20 animate-pulse">
+                  <Truck className="h-5 w-5 text-brand-blue" />
+                </div>
+
+                {/* Main Cutout Container */}
+                <div className="relative w-full max-w-[420px] aspect-square flex items-center justify-center">
+                  
+                  {/* Decorative Blue Half-Circle crescent behind the main cutout */}
+                  <div className="absolute right-0 bottom-0 w-[88%] h-[88%] rounded-br-[210px] rounded-bl-[105px] rounded-tr-[105px] bg-brand-blue/90 z-0 shadow-lg" />
+                  
+                  {/* Centered Circular Cutout Frame for Image Slider */}
+                  <div className="relative w-[90%] h-[90%] rounded-full overflow-hidden border-[6px] border-white shadow-2xl bg-white z-10 aspect-square group">
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-bg-lighter/30 via-transparent to-transparent z-10 pointer-events-none" />
+                    
+                    {/* Sliding Images */}
+                    <div className="relative w-full h-full">
+                      {heroImages.map((img, idx) => (
+                        <img 
+                          key={idx}
+                          src={img} 
+                          alt="Al Kyanat KSA Fleet" 
+                          className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out transform ${
+                            idx === activeImage 
+                              ? 'opacity-100 scale-100 z-0' 
+                              : 'opacity-0 scale-105 pointer-events-none'
+                          }`}
+                        />
+                      ))}
+                    </div>
+
+                    {/* Manual controls (Overlay dots on hover) */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/25 px-3 py-1.5 rounded-full">
+                      {heroImages.map((_, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setActiveImage(idx)}
+                          className={`h-2 rounded-full transition-all duration-200 cursor-pointer ${
+                            idx === activeImage ? 'w-4 bg-white' : 'w-2 bg-white/50'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                </div>
+
               </div>
 
             </div>
@@ -310,187 +409,177 @@ export const Home: React.FC<HomeProps> = ({ currentLang, onLangChange, onPageCha
           </div>
         </section>
 
-        {/* Section 5: Lead Inquiry Form (Sleek Dark Navy Contact Section) */}
-        <section id="contact-form" className="py-24 bg-brand-navy text-white">
+        {/* Section 5: Experience / Our Professional Journey Timeline */}
+        <section id="journey-section" className="py-24 bg-brand-bg-lighter/30 border-b border-zinc-150">
           <div className="max-w-7xl mx-auto px-6">
-            <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 ${isRtl ? 'lg:flex-row-reverse' : ''}`}>
+            <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-start ${isRtl ? 'lg:flex-row-reverse' : ''}`}>
               
-              {/* Form Info details (Left / LTR) */}
-              <div className="lg:col-span-5 flex flex-col space-y-8">
-                <div className="space-y-4">
-                  <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-brand-navy-dark px-3.5 py-1.5 rounded-lg border border-zinc-800 w-fit">
-                    {data.leadForm.subtitle}
-                  </span>
-                  <h2 className="text-2xl md:text-4xl font-black text-white tracking-tight leading-tight">
-                    {data.leadForm.title}
-                  </h2>
-                  <p className="text-xs md:text-sm text-zinc-400 font-semibold leading-relaxed">
-                    {data.leadForm.paragraph}
-                  </p>
-                </div>
-
-                <div className="space-y-5">
-                  <div className="flex gap-4 p-4 bg-brand-navy-dark/60 border border-zinc-800 rounded-2xl">
-                    <div className="p-2.5 bg-brand-navy text-brand-blue border border-zinc-800 rounded-xl h-10 w-10 shrink-0 flex items-center justify-center">
-                      <Phone className="h-4.5 w-4.5" />
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-[8px] uppercase tracking-wider font-extrabold text-zinc-500">
-                        {currentLang === 'AR' ? 'رقم الاتصال' : 'Operations Desk'}
-                      </span>
-                      <a href="tel:+966114567890" className="text-xs text-zinc-300 font-extrabold hover:text-brand-blue mt-1">
-                        +966 11 456 7890
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 p-4 bg-brand-navy-dark/60 border border-zinc-800 rounded-2xl">
-                    <div className="p-2.5 bg-brand-navy text-brand-blue border border-zinc-800 rounded-xl h-10 w-10 shrink-0 flex items-center justify-center">
-                      <Mail className="h-4.5 w-4.5" />
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-[8px] uppercase tracking-wider font-extrabold text-zinc-500">
-                        {currentLang === 'AR' ? 'البريد الإلكتروني' : 'Official Inquiry'}
-                      </span>
-                      <a href="mailto:info@alkyanat.com" className="text-xs text-zinc-300 font-extrabold hover:text-brand-blue mt-1">
-                        info@alkyanat.com
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 p-4 bg-brand-navy-dark/60 border border-zinc-800 rounded-2xl">
-                    <div className="p-2.5 bg-brand-navy text-brand-blue border border-zinc-800 rounded-xl h-10 w-10 shrink-0 flex items-center justify-center">
-                      <MapPin className="h-4.5 w-4.5" />
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-[8px] uppercase tracking-wider font-extrabold text-zinc-500">
-                        {currentLang === 'AR' ? 'العنوان' : 'Office Address'}
-                      </span>
-                      <span className="text-xs text-zinc-300 font-bold mt-1">
-                        King Fahd Road, Al Rahmaniyah, Riyadh 12341, KSA
-                      </span>
-                    </div>
-                  </div>
-                </div>
+              {/* Left Column (Section Heading with Animation) */}
+              <div 
+                className={`lg:col-span-5 flex flex-col space-y-4 transition-all duration-1000 ease-out transform ${
+                  journeyVisible 
+                    ? 'opacity-100 translate-x-0' 
+                    : 'opacity-0 -translate-x-12 pointer-events-none'
+                }`}
+              >
+                <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-white border border-zinc-200 px-4 py-1.5 rounded-full w-fit shadow-sm">
+                  {data.journey.subtitle}
+                </span>
+                <h2 className="text-2xl md:text-4xl font-extrabold text-brand-navy tracking-tight leading-tight">
+                  {data.journey.title}
+                </h2>
+                <div className="w-16 h-1 bg-brand-blue rounded-full mt-2" />
               </div>
 
-              {/* Form Input fields (Right / LTR) */}
-              <div className="lg:col-span-7 bg-brand-navy-dark/60 border border-zinc-800 rounded-3xl p-8 shadow-2xl relative overflow-hidden">
-                {isSubmitted ? (
-                  <div className="flex flex-col items-center justify-center text-center py-10 space-y-4">
-                    <CheckCircle className="h-14 w-14 text-brand-blue" />
-                    <h3 className="text-xl font-extrabold text-white">
-                      {data.leadForm.success}
-                    </h3>
-                    <button
-                      onClick={handleReset}
-                      className="px-6 py-3 bg-zinc-900 border border-zinc-800 hover:border-brand-blue text-white hover:text-brand-blue font-black text-xs uppercase tracking-wider rounded-xl transition-all cursor-pointer"
+              {/* Right Column (Vertical Timeline with Scroll Reveal Animations) */}
+              <div className="lg:col-span-7 flex flex-col space-y-2">
+                {data.journey.items.map((item, idx) => {
+                  // Staggered delays
+                  const delayClass = [
+                    'delay-[100ms]',
+                    'delay-[300ms]',
+                    'delay-[500ms]',
+                    'delay-[700ms]'
+                  ][idx] || 'delay-0';
+
+                  return (
+                    <div 
+                      key={idx} 
+                      className={`flex gap-6 relative group transition-all duration-700 ease-out transform ${
+                        journeyVisible 
+                          ? 'opacity-100 translate-y-0' 
+                          : 'opacity-0 translate-y-8 pointer-events-none'
+                      } ${delayClass} ${isRtl ? 'flex-row-reverse text-right' : 'text-left'}`}
                     >
-                      {data.leadForm.reset}
-                    </button>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                    
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      {/* Name */}
-                      <div className="flex flex-col gap-1.5">
-                        <label className="text-[9px] uppercase tracking-wider font-black text-zinc-400">
-                          {data.leadForm.nameLabel}
-                        </label>
-                        <input
-                          required
-                          type="text"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          placeholder={data.leadForm.placeholderName}
-                          className="px-4 py-3.5 bg-brand-navy border border-zinc-850 focus:border-brand-blue rounded-xl focus:outline-none text-xs font-semibold text-white placeholder-zinc-550"
-                        />
+                      {/* Vertical connecting line */}
+                      {idx < data.journey.items.length - 1 && (
+                        <div className={`absolute ${isRtl ? 'right-6' : 'left-6'} top-12 bottom-0 w-0.5 bg-zinc-200 group-hover:bg-brand-blue/30 transition-colors`} />
+                      )}
+                      
+                      {/* Circular Step Badge */}
+                      <div className="flex-shrink-0 h-12 w-12 rounded-full bg-white text-brand-blue border border-zinc-200 font-extrabold text-sm flex items-center justify-center z-10 group-hover:bg-brand-blue group-hover:text-white group-hover:border-brand-blue shadow-sm transition-all duration-300">
+                        {`0${idx + 1}`}
                       </div>
-
-                      {/* Email */}
-                      <div className="flex flex-col gap-1.5">
-                        <label className="text-[9px] uppercase tracking-wider font-black text-zinc-400">
-                          {data.leadForm.emailLabel}
-                        </label>
-                        <input
-                          required
-                          type="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          placeholder={data.leadForm.placeholderEmail}
-                          className="px-4 py-3.5 bg-brand-navy border border-zinc-850 focus:border-brand-blue rounded-xl focus:outline-none text-xs font-semibold text-white placeholder-zinc-550"
-                        />
+                      
+                      {/* Item Details */}
+                      <div className="space-y-2 pb-8">
+                        <h4 className="text-lg font-bold text-brand-navy group-hover:text-brand-blue transition-colors duration-250">
+                          {item.title}
+                        </h4>
+                        <p className="text-xs md:text-sm text-slate-500 font-semibold leading-relaxed">
+                          {item.description}
+                        </p>
                       </div>
                     </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      {/* Phone */}
-                      <div className="flex flex-col gap-1.5">
-                        <label className="text-[9px] uppercase tracking-wider font-black text-zinc-400">
-                          {data.leadForm.phoneLabel}
-                        </label>
-                        <input
-                          required
-                          type="text"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleInputChange}
-                          placeholder={data.leadForm.placeholderPhone}
-                          className="px-4 py-3.5 bg-brand-navy border border-zinc-850 focus:border-brand-blue rounded-xl focus:outline-none text-xs font-semibold text-white placeholder-zinc-550"
-                        />
-                      </div>
-
-                      {/* Equipment Type */}
-                      <div className="flex flex-col gap-1.5">
-                        <label className="text-[9px] uppercase tracking-wider font-black text-zinc-400">
-                          {data.leadForm.selectLabel}
-                        </label>
-                        <select
-                          name="equipment"
-                          value={formData.equipment}
-                          onChange={handleInputChange}
-                          className="px-4 py-3.5 bg-brand-navy border border-zinc-850 focus:border-brand-blue rounded-xl focus:outline-none text-xs font-semibold text-white cursor-pointer"
-                        >
-                          {data.leadForm.options.map((opt: { id: string; label: string }) => (
-                            <option key={opt.id} value={opt.id} className="bg-brand-navy">
-                              {opt.label}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-
-                    {/* Message Details */}
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-[9px] uppercase tracking-wider font-black text-zinc-400">
-                        {data.leadForm.messageLabel}
-                      </label>
-                      <textarea
-                        required
-                        rows={4}
-                        name="message"
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        placeholder={data.leadForm.placeholderMessage}
-                        className="px-4 py-3.5 bg-brand-navy border border-zinc-850 focus:border-brand-blue rounded-xl focus:outline-none text-xs font-semibold text-white placeholder-zinc-550 resize-none"
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      className="w-full py-4 px-6 bg-brand-blue hover:bg-brand-blue-hover text-white font-black uppercase tracking-wider text-xs rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
-                    >
-                      <span>{data.leadForm.submitBtn}</span>
-                      <ChevronRight className={`h-4.5 w-4.5 stroke-[3.5] ${isRtl ? 'rotate-180' : ''}`} />
-                    </button>
-                  </form>
-                )}
+                  );
+                })}
               </div>
 
             </div>
+          </div>
+        </section>
+
+        {/* Section 6: Our Expertise progress bars */}
+        <section id="expertise-section" className="py-24 bg-white border-b border-zinc-150">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-center ${isRtl ? 'lg:flex-row-reverse' : ''}`}>
+              
+              {/* Left Column (Details with Animation) */}
+              <div 
+                className={`lg:col-span-5 flex flex-col space-y-4 transition-all duration-1000 ease-out transform ${
+                  expertiseVisible 
+                    ? 'opacity-100 translate-x-0' 
+                    : 'opacity-0 -translate-x-12 pointer-events-none'
+                }`}
+              >
+                <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-brand-bg-light px-3.5 py-1.5 rounded-lg w-fit">
+                  {data.expertise.subtitle}
+                </span>
+                <h2 className="text-2xl md:text-4xl font-extrabold text-brand-navy tracking-tight leading-tight">
+                  {data.expertise.title}
+                </h2>
+                <p className="text-xs md:text-sm text-zinc-500 font-semibold leading-relaxed">
+                  {currentLang === 'AR' 
+                    ? 'نعمل باستمرار على تطوير قدراتنا الفنية لنقدم شاحنات نظافة متقدمة ورافعات ثقيلة للمشاريع البلدية والإعمار بالمملكة بمهنية وأمان.'
+                    : 'We continuously improve our technical capabilities and fleet systems to deliver reliable, high-capacity road cleaning, heavy lifting, and material dispatch solutions across KSA.'}
+                </p>
+              </div>
+
+              {/* Right Column (Progress Bars at 100% capacity with Dynamic Loading Animations) */}
+              <div className="lg:col-span-7 flex flex-col space-y-6">
+                {data.expertise.items.map((item, index) => (
+                  <div key={index} className="space-y-2">
+                    <div className={`flex justify-between text-xs font-extrabold text-brand-navy ${isRtl ? 'flex-row-reverse' : ''}`}>
+                      <span>{item.label}</span>
+                      <span>{item.value}%</span>
+                    </div>
+                    <div className="h-2.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-brand-blue rounded-full transition-all duration-[1200ms] cubic-bezier(0.1, 0.8, 0.2, 1)" 
+                        style={{ width: expertiseVisible ? `${item.value}%` : '0%' }} 
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* Section 7: Testimonials Slider */}
+        <section className="py-24 bg-brand-bg-lighter/40 border-b border-zinc-150">
+          <div className="max-w-7xl mx-auto px-6">
+            
+            <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
+              <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-white border border-zinc-200 px-3 py-1.5 rounded-lg shadow-sm">
+                {data.testimonials.subtitle}
+              </span>
+              <h2 className="text-2xl md:text-4xl font-extrabold text-brand-navy tracking-tight">
+                {data.testimonials.title}
+              </h2>
+            </div>
+
+            {/* Testimonials Slider Body */}
+            <div className="relative max-w-4xl mx-auto text-center px-6 mt-12 group">
+              <div className="text-6xl text-brand-blue/15 font-serif absolute -top-8 left-10 pointer-events-none">“</div>
+              
+              <div className="min-h-[140px] flex items-center justify-center">
+                {data.testimonials.items.map((item, idx) => (
+                  <div 
+                    key={idx}
+                    className={`transition-all duration-500 ease-in-out ${
+                      idx === activeTestimonial ? 'opacity-100 scale-100 block' : 'opacity-0 scale-95 hidden'
+                    }`}
+                  >
+                    <p className="text-base md:text-lg text-brand-navy/90 font-medium italic leading-relaxed">
+                      "{item.quote}"
+                    </p>
+                    <h4 className="text-sm font-extrabold text-brand-navy mt-6">
+                      {item.author}
+                    </h4>
+                    <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider block mt-1">
+                      {item.role}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Dots indicators */}
+              <div className="flex items-center justify-center gap-2 mt-8">
+                {data.testimonials.items.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveTestimonial(idx)}
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                      idx === activeTestimonial ? 'w-6 bg-brand-blue' : 'w-2 bg-zinc-300 hover:bg-zinc-400'
+                    }`}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+
           </div>
         </section>
 

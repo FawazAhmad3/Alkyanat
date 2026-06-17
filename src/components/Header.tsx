@@ -108,6 +108,7 @@ export const Header: React.FC<HeaderProps> = ({ currentLang, onLangChange, activ
                     onMouseLeave={() => setIsServicesOpen(false)}
                   >
                     <button
+                      onClick={(e) => handleLinkClick(e, '#/services')}
                       className={`text-[15px] font-semibold transition-colors flex items-center gap-1 cursor-pointer ${
                         isActive ? 'text-brand-blue' : 'text-slate-800 hover:text-brand-blue'
                       }`}
@@ -231,6 +232,15 @@ export const Header: React.FC<HeaderProps> = ({ currentLang, onLangChange, activ
                     <div className={`flex flex-col pl-4 gap-2.5 overflow-hidden transition-all duration-300 ${
                       isServicesOpen ? 'max-h-80 mt-3 pb-3' : 'max-h-0'
                     }`}>
+                      <a
+                        href="#/services"
+                        onClick={(e) => handleLinkClick(e, '#/services')}
+                        className={`text-[11px] font-black uppercase tracking-wider text-brand-blue hover:text-brand-blue py-1 ${
+                          isRtl ? 'text-right' : 'text-left'
+                        }`}
+                      >
+                        {currentLang === 'AR' ? 'عرض جميع الخدمات' : 'View All Services'}
+                      </a>
                       {data.servicesDropdown.items.map((item: { label: string; href: string }) => (
                         <a
                           key={item.label}

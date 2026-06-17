@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { CheckCircle, ChevronRight, Clock, Wrench, MapPin, BookOpen, HelpCircle } from 'lucide-react';
@@ -28,52 +28,6 @@ export const Services: React.FC<ServicesProps> = ({ currentLang, onLangChange, o
       default:
         return <HelpCircle className="h-6 w-6 text-brand-blue" />;
     }
-  };
-
-  // Form States
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    type: 'elgin',
-    duration: '',
-    message: ''
-  });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  // Sync selected type from URL hash query if present
-  useEffect(() => {
-    const handleHashChange = () => {
-      const match = window.location.hash.match(/type=([a-z]+)/);
-      if (match && match[1]) {
-        setFormData((prev) => ({ ...prev, type: match[1] }));
-      }
-    };
-    window.addEventListener('hashchange', handleHashChange);
-    handleHashChange();
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitted(true);
-  };
-
-  const handleReset = () => {
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      type: 'elgin',
-      duration: '',
-      message: ''
-    });
-    setIsSubmitted(false);
   };
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, page: 'home' | 'about' | 'services' | 'blog' | 'contact') => {
@@ -168,7 +122,8 @@ export const Services: React.FC<ServicesProps> = ({ currentLang, onLangChange, o
                   </div>
 
                   <a
-                    href="#quote-form"
+                    href="#/contact"
+                    onClick={(e) => handleLinkClick(e, 'contact')}
                     className="inline-flex items-center gap-1.5 mt-8 text-xs font-bold uppercase tracking-widest text-brand-navy hover:text-brand-blue transition-all w-fit cursor-pointer"
                   >
                     <span>{currentLang === 'AR' ? 'طلب عرض سعر' : 'Get a Quote'}</span>
@@ -254,152 +209,6 @@ export const Services: React.FC<ServicesProps> = ({ currentLang, onLangChange, o
               ))}
             </div>
 
-          </div>
-        </section>
-
-        {/* Quote Inquiry Form */}
-        <section id="quote-form" className="py-24 bg-white">
-          <div className="max-w-3xl mx-auto px-6">
-            <div className="bg-brand-navy text-white rounded-3xl p-8 md:p-12 border border-brand-navy-dark shadow-2xl relative overflow-hidden">
-              <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-brand-blue/5 rounded-full blur-3xl" />
-              
-              <div className="text-center mb-10 space-y-3">
-                <span className="text-xs font-black uppercase tracking-widest text-brand-blue">
-                  {data.quoteForm.subtitle}
-                </span>
-                <h3 className="text-xl md:text-3xl font-extrabold text-white tracking-tight">
-                  {data.quoteForm.title}
-                </h3>
-              </div>
-
-              {isSubmitted ? (
-                <div className="flex flex-col items-center justify-center text-center py-10 space-y-4">
-                  <CheckCircle className="h-14 w-14 text-brand-blue" />
-                  <h4 className="text-lg font-extrabold text-white">
-                    {data.quoteForm.success}
-                  </h4>
-                  <button
-                    onClick={handleReset}
-                    className="px-6 py-3 bg-brand-navy-dark border border-brand-navy hover:border-brand-blue text-white hover:text-brand-blue font-bold text-xs uppercase tracking-wider rounded-xl transition-all cursor-pointer"
-                  >
-                    {currentLang === 'AR' ? 'إرسال طلب آخر' : 'Send another request'}
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    {/* Name */}
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-[9px] uppercase tracking-wider font-bold text-slate-300">
-                        {data.quoteForm.nameLabel}
-                      </label>
-                      <input
-                        required
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        className="px-4 py-3.5 bg-brand-navy-dark border border-brand-navy focus:border-brand-blue rounded-xl focus:outline-none text-xs font-medium text-white"
-                      />
-                    </div>
-
-                    {/* Email */}
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-[9px] uppercase tracking-wider font-bold text-slate-300">
-                        {data.quoteForm.emailLabel}
-                      </label>
-                      <input
-                        required
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        className="px-4 py-3.5 bg-brand-navy-dark border border-brand-navy focus:border-brand-blue rounded-xl focus:outline-none text-xs font-medium text-white"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    {/* Phone */}
-                    <div className="flex flex-col gap-1.5 sm:col-span-1">
-                      <label className="text-[9px] uppercase tracking-wider font-bold text-slate-300">
-                        {data.quoteForm.phoneLabel}
-                      </label>
-                      <input
-                        required
-                        type="text"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        className="px-4 py-3.5 bg-brand-navy-dark border border-brand-navy focus:border-brand-blue rounded-xl focus:outline-none text-xs font-medium text-white"
-                      />
-                    </div>
-
-                    {/* Equipment Type Selection */}
-                    <div className="flex flex-col gap-1.5 sm:col-span-1">
-                      <label className="text-[9px] uppercase tracking-wider font-bold text-slate-300">
-                        {data.quoteForm.typeLabel}
-                      </label>
-                      <select
-                        name="type"
-                        value={formData.type}
-                        onChange={handleInputChange}
-                        className="px-4 py-3.5 bg-brand-navy-dark border border-brand-navy focus:border-brand-blue rounded-xl focus:outline-none text-xs font-medium text-white cursor-pointer"
-                      >
-                        <option value="elgin">Elgin Road Sweeper</option>
-                        <option value="johnston">Johnston Road Sweeper</option>
-                        <option value="scarab">ScaraB Road Sweeper</option>
-                        <option value="gardens">Garden Sweepers</option>
-                        <option value="boomtrucks">Boom Trucks (10/12/15 Tons)</option>
-                        <option value="forklifts">Forklifts</option>
-                        <option value="cranes">Cranes</option>
-                        <option value="heavyduty">Heavy Duty Construction</option>
-                      </select>
-                    </div>
-
-                    {/* Rental Duration */}
-                    <div className="flex flex-col gap-1.5 sm:col-span-1">
-                      <label className="text-[9px] uppercase tracking-wider font-bold text-slate-300">
-                        {data.quoteForm.durationLabel}
-                      </label>
-                      <input
-                        required
-                        type="text"
-                        name="duration"
-                        value={formData.duration}
-                        onChange={handleInputChange}
-                        placeholder="e.g. 3 Months"
-                        className="px-4 py-3.5 bg-brand-navy-dark border border-brand-navy focus:border-brand-blue rounded-xl focus:outline-none text-xs font-medium text-white placeholder-slate-500"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Project Scope */}
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-[9px] uppercase tracking-wider font-bold text-slate-300">
-                      {data.quoteForm.messageLabel}
-                    </label>
-                    <textarea
-                      required
-                      rows={4}
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      className="px-4 py-3.5 bg-brand-navy-dark border border-brand-navy focus:border-brand-blue rounded-xl focus:outline-none text-xs font-medium text-white resize-none"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full py-4 px-6 bg-brand-blue hover:bg-brand-blue-hover text-white font-extrabold uppercase tracking-wider text-xs rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
-                  >
-                    <span>{data.quoteForm.submitBtn}</span>
-                    <ChevronRight className={`h-4.5 w-4.5 stroke-[3.5] ${isRtl ? 'rotate-180' : ''}`} />
-                  </button>
-                </form>
-              )}
-
-            </div>
           </div>
         </section>
 

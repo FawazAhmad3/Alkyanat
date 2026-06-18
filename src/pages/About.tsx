@@ -45,30 +45,35 @@ export const About: React.FC<AboutProps> = ({ currentLang, onLangChange, onPageC
   };
 
   return (
-    <div className={`min-h-screen bg-white text-slate-700 flex flex-col justify-between font-sans overflow-x-hidden ${isRtl ? 'text-right' : 'text-left'}`}>
+    <div className={`min-h-screen bg-brand-navy-dark text-slate-300 flex flex-col justify-between font-sans overflow-x-hidden ${isRtl ? 'text-right' : 'text-left'}`}>
+      
       {/* Header */}
       <Header currentLang={currentLang} onLangChange={onLangChange} activePage="about" onPageChange={onPageChange} />
 
       {/* Main Content */}
-      <main className="flex-grow pt-[88px]">
+      <main className="flex-grow pt-[88px] relative">
         
-        {/* Breadcrumb Header Banner (Navy theme) */}
-        <section className="bg-brand-navy text-white py-16 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-[0.03] pointer-events-none" />
-          <div className="max-w-7xl mx-auto px-6 relative z-10 text-center space-y-3">
-            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white">
+        {/* Glow decoration */}
+        <div className="absolute top-20 right-0 w-80 h-80 bg-brand-blue/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-40 left-0 w-[500px] h-[500px] bg-brand-indigo/5 rounded-full blur-3xl pointer-events-none" />
+
+        {/* Breadcrumb Header Banner (Futuristic Navy theme) */}
+        <section className="bg-brand-navy text-white py-20 relative overflow-hidden border-b border-white/[0.06]">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-[0.02] pointer-events-none" />
+          <div className="max-w-7xl mx-auto px-6 relative z-10 text-center space-y-4">
+            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white font-display">
               {data.hero.title}
             </h1>
-            <p className="text-xs md:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-sm md:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed font-medium">
               {data.hero.subtitle}
             </p>
             {/* Breadcrumb nav */}
-            <div className={`flex items-center justify-center gap-2.5 text-[10px] font-black uppercase tracking-widest text-slate-400 pt-2 ${isRtl ? 'flex-row-reverse' : ''}`}>
+            <div className={`flex items-center justify-center gap-2.5 text-xs font-bold uppercase tracking-widest text-slate-500 pt-2 ${isRtl ? 'flex-row-reverse' : ''}`}>
               <a href="#/home" onClick={(e) => handleLinkClick(e, 'home')} className="hover:text-brand-blue transition-colors">
                 {data.hero.breadcrumbHome}
               </a>
               <span className="text-slate-600">/</span>
-              <span className="text-brand-blue">
+              <span className="text-brand-blue font-extrabold">
                 {data.hero.breadcrumbCurrent}
               </span>
             </div>
@@ -76,19 +81,19 @@ export const About: React.FC<AboutProps> = ({ currentLang, onLangChange, onPageC
         </section>
 
         {/* History Section (Split Content) */}
-        <section className="py-24 bg-white border-b border-zinc-100">
+        <section className="py-24 bg-transparent border-b border-white/[0.06]">
           <div className="max-w-7xl mx-auto px-6">
             <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-center ${isRtl ? 'lg:flex-row-reverse' : ''}`}>
               
               {/* History Details */}
               <div className="lg:col-span-7 space-y-6">
-                <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-brand-bg-light px-3.5 py-1.5 rounded-xl w-fit inline-block">
+                <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-white/[0.02] border border-white/[0.08] px-3.5 py-1.5 rounded-xl w-fit inline-block">
                   {data.history.subtitle}
                 </span>
-                <h2 className="text-2xl md:text-4xl font-extrabold text-brand-navy tracking-tight leading-tight">
+                <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight leading-tight font-display">
                   {data.history.title}
                 </h2>
-                <div className="space-y-4 text-xs md:text-sm text-slate-550 font-medium leading-relaxed">
+                <div className="space-y-4 text-xs md:text-sm text-slate-450 leading-relaxed font-medium">
                   <p>{data.history.paragraph1}</p>
                   <p>{data.history.paragraph2}</p>
                 </div>
@@ -96,11 +101,11 @@ export const About: React.FC<AboutProps> = ({ currentLang, onLangChange, onPageC
 
               {/* History Graphics card */}
               <div className="lg:col-span-5 flex justify-center">
-                <div className="w-full aspect-[4/3] rounded-3xl overflow-hidden border border-brand-bg-light bg-brand-bg-lighter p-2.5 shadow-md">
+                <div className="w-full aspect-[4/3] rounded-3xl overflow-hidden border border-white/[0.08] bg-white/[0.01] p-2.5 shadow-2xl">
                   <img 
                     src="/images/realestate_banner.png" 
                     alt="Al Kyanat KSA Operations" 
-                    className="w-full h-full object-cover rounded-2xl opacity-95 hover:scale-102 transition-transform duration-500"
+                    className="w-full h-full object-cover rounded-2xl opacity-80 hover:opacity-100 hover:scale-102 transition-all duration-500"
                   />
                 </div>
               </div>
@@ -110,14 +115,14 @@ export const About: React.FC<AboutProps> = ({ currentLang, onLangChange, onPageC
         </section>
 
         {/* HSE & Quality Section (4-card Grid) */}
-        <section className="py-24 bg-brand-bg-lighter border-b border-zinc-100">
+        <section className="py-24 bg-brand-navy border-b border-white/[0.06]">
           <div className="max-w-7xl mx-auto px-6">
             
             <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-              <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-brand-bg-light px-3.5 py-1.5 rounded-xl inline-block">
+              <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-white/[0.02] border border-white/[0.08] px-3.5 py-1.5 rounded-xl inline-block shadow-lg">
                 {data.policiesSection.subtitle}
               </span>
-              <h2 className="text-2xl md:text-4xl font-extrabold text-brand-navy tracking-tight">
+              <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight font-display">
                 {data.policiesSection.title}
               </h2>
             </div>
@@ -126,16 +131,16 @@ export const About: React.FC<AboutProps> = ({ currentLang, onLangChange, onPageC
               {data.policiesSection.items.map((item, index) => (
                 <div 
                   key={index}
-                  className="bg-white border border-slate-100 rounded-2xl p-6 transition-all duration-300 hover:border-brand-blue hover:shadow-lg hover:shadow-brand-blue/5 relative overflow-hidden group"
+                  className="bg-white/[0.02] border border-white/[0.06] hover:border-brand-blue/30 rounded-3xl p-6 hover:bg-white/[0.03] transition-all duration-300 relative overflow-hidden group hover:shadow-[0_10px_30px_-15px_rgba(0,229,255,0.08)]"
                 >
                   <div className="absolute top-0 left-0 w-1.5 h-full bg-brand-blue transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
-                  <div className="p-3 bg-brand-bg-light rounded-xl w-fit mb-5 shadow-sm">
+                  <div className="p-3 bg-white/[0.02] border border-white/[0.08] rounded-xl w-fit mb-5 shadow-md">
                     {renderPolicyIcon(index)}
                   </div>
-                  <h3 className="text-base font-bold text-brand-navy tracking-tight">
+                  <h3 className="text-base font-bold text-white tracking-tight font-display group-hover:text-brand-blue transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-slate-500 font-medium mt-3 leading-relaxed">
+                  <p className="text-xs text-slate-400 font-medium mt-3 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -146,46 +151,46 @@ export const About: React.FC<AboutProps> = ({ currentLang, onLangChange, onPageC
         </section>
 
         {/* FAQ Accordion Section */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-transparent">
           <div className="max-w-4xl mx-auto px-6">
             
             <div className="text-center mb-16 space-y-4">
-              <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-brand-bg-light px-3.5 py-1.5 rounded-xl inline-block">
+              <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-white/[0.02] border border-white/[0.08] px-3.5 py-1.5 rounded-xl inline-block shadow-lg">
                 {data.faqsSection.subtitle}
               </span>
-              <h2 className="text-2xl md:text-4xl font-extrabold text-brand-navy tracking-tight">
+              <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight font-display">
                 {data.faqsSection.title}
               </h2>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-4.5">
               {data.faqsSection.items.map((item, index) => {
                 const isOpen = activeFaq === index;
                 return (
                   <div 
                     key={index}
                     className={`border rounded-2xl overflow-hidden transition-all duration-300 ${
-                      isOpen ? 'border-brand-blue shadow-md shadow-brand-blue/5' : 'border-slate-100 hover:border-slate-300'
+                      isOpen ? 'border-brand-blue bg-white/[0.02] shadow-xl shadow-brand-blue/5' : 'border-white/[0.06] bg-white/[0.01] hover:border-white/[0.15]'
                     }`}
                   >
                     <button
                       onClick={() => toggleFaq(index)}
-                      className={`w-full py-5 px-6 font-bold text-xs md:text-sm tracking-tight flex items-center justify-between cursor-pointer transition-colors ${
-                        isOpen ? 'bg-brand-bg-lighter text-brand-blue' : 'bg-white text-brand-navy hover:text-brand-blue'
+                      className={`w-full py-5 px-6 font-bold text-xs md:text-sm tracking-tight flex items-center justify-between cursor-pointer transition-colors font-display ${
+                        isOpen ? 'text-brand-blue' : 'text-slate-200 hover:text-brand-blue'
                       } ${isRtl ? 'flex-row-reverse text-right' : 'text-left'}`}
                     >
                       <span>{item.question}</span>
                       <div className={`p-1 rounded-lg transition-colors ${
-                        isOpen ? 'bg-brand-blue/15 text-brand-blue' : 'bg-slate-100 text-slate-500'
+                        isOpen ? 'bg-brand-blue/10 text-brand-blue' : 'bg-white/[0.05] text-slate-400'
                       }`}>
                         {isOpen ? <Minus className="h-3.5 w-3.5" /> : <Plus className="h-3.5 w-3.5" />}
                       </div>
                     </button>
 
                     <div className={`overflow-hidden transition-all duration-300 ${
-                      isOpen ? 'max-h-60 border-t border-brand-bg-light bg-brand-bg-lighter/20' : 'max-h-0'
+                      isOpen ? 'max-h-60 border-t border-white/[0.06] bg-white/[0.005]' : 'max-h-0'
                     }`}>
-                      <p className="p-6 text-xs text-slate-500 font-medium leading-relaxed">
+                      <p className="p-6 text-xs text-slate-400 font-medium leading-relaxed">
                         {item.answer}
                       </p>
                     </div>

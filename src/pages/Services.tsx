@@ -38,30 +38,35 @@ export const Services: React.FC<ServicesProps> = ({ currentLang, onLangChange, o
   };
 
   return (
-    <div className={`min-h-screen bg-white text-slate-700 flex flex-col justify-between font-sans overflow-x-hidden ${isRtl ? 'text-right' : 'text-left'}`}>
+    <div className={`min-h-screen bg-brand-navy-dark text-slate-300 flex flex-col justify-between font-sans overflow-x-hidden ${isRtl ? 'text-right' : 'text-left'}`}>
+      
       {/* Header */}
       <Header currentLang={currentLang} onLangChange={onLangChange} activePage="services" onPageChange={onPageChange} />
 
       {/* Main Content */}
-      <main className="flex-grow pt-[88px]">
+      <main className="flex-grow pt-[88px] relative">
         
-        {/* Breadcrumb Header Banner (Navy theme) */}
-        <section className="bg-brand-navy text-white py-16 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-[0.03] pointer-events-none" />
-          <div className="max-w-7xl mx-auto px-6 relative z-10 text-center space-y-3">
-            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white">
+        {/* Glow decoration */}
+        <div className="absolute top-20 left-0 w-80 h-80 bg-brand-blue/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-40 right-0 w-[500px] h-[500px] bg-brand-indigo/5 rounded-full blur-3xl pointer-events-none" />
+
+        {/* Breadcrumb Header Banner (Futuristic Navy theme) */}
+        <section className="bg-brand-navy text-white py-20 relative overflow-hidden border-b border-white/[0.06]">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-[0.02] pointer-events-none" />
+          <div className="max-w-7xl mx-auto px-6 relative z-10 text-center space-y-4">
+            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white font-display">
               {data.hero.title}
             </h1>
-            <p className="text-xs md:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-sm md:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed font-medium">
               {data.hero.subtitle}
             </p>
             {/* Breadcrumb nav */}
-            <div className={`flex items-center justify-center gap-2.5 text-[10px] font-black uppercase tracking-widest text-slate-400 pt-2 ${isRtl ? 'flex-row-reverse' : ''}`}>
+            <div className={`flex items-center justify-center gap-2.5 text-xs font-bold uppercase tracking-widest text-slate-500 pt-2 ${isRtl ? 'flex-row-reverse' : ''}`}>
               <a href="#/home" onClick={(e) => handleLinkClick(e, 'home')} className="hover:text-brand-blue transition-colors">
                 {data.hero.breadcrumbHome}
               </a>
               <span className="text-slate-600">/</span>
-              <span className="text-brand-blue">
+              <span className="text-brand-blue font-extrabold">
                 {data.hero.breadcrumbCurrent}
               </span>
             </div>
@@ -69,53 +74,53 @@ export const Services: React.FC<ServicesProps> = ({ currentLang, onLangChange, o
         </section>
 
         {/* Intro Section */}
-        <section className="py-20 bg-white border-b border-zinc-100">
+        <section className="py-20 bg-transparent border-b border-white/[0.06]">
           <div className="max-w-4xl mx-auto px-6 text-center space-y-4">
-            <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-brand-bg-light px-3.5 py-1.5 rounded-xl inline-block">
+            <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-white/[0.02] border border-white/[0.08] px-3.5 py-1.5 rounded-xl inline-block shadow-lg">
               {data.intro.subtitle}
             </span>
-            <h2 className="text-2xl md:text-4xl font-extrabold text-brand-navy tracking-tight leading-tight">
+            <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight leading-tight font-display">
               {data.intro.title}
             </h2>
-            <p className="text-xs md:text-sm text-slate-500 font-medium leading-relaxed">
+            <p className="text-xs md:text-sm text-slate-400 font-medium leading-relaxed">
               {data.intro.paragraph}
             </p>
           </div>
         </section>
 
-        {/* Services List Section (Grid of Cards with details/specs) */}
-        <section className="py-24 bg-brand-bg-lighter border-b border-zinc-100">
+        {/* Services List Section */}
+        <section className="py-24 bg-transparent border-b border-white/[0.06]">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {data.servicesList.map((service) => (
                 <div 
                   key={service.id}
                   id={service.id}
-                  className="bg-white border border-slate-100 rounded-3xl p-8 transition-all duration-300 hover:border-brand-blue hover:shadow-lg hover:shadow-brand-blue/5 flex flex-col justify-between relative overflow-hidden group"
+                  className="bg-white/[0.02] border border-white/[0.06] hover:border-brand-blue/30 rounded-3xl p-8 hover:bg-white/[0.03] transition-all duration-300 flex flex-col justify-between relative overflow-hidden group hover:shadow-[0_10px_30px_-15px_rgba(0,229,255,0.08)]"
                 >
                   <div className="absolute top-0 left-0 w-2 h-full bg-brand-blue transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
                   
                   <div className="space-y-6">
                     <div className="flex items-center gap-3">
-                      <span className="text-xs font-bold text-brand-blue bg-brand-bg-light px-3 py-1 rounded-lg">
+                      <span className="text-[10px] font-bold text-brand-blue bg-white/[0.02] border border-white/[0.08] px-3 py-1.5 rounded-lg font-display">
                         {service.category}
                       </span>
                     </div>
 
-                    <h3 className="text-xl font-bold text-brand-navy tracking-tight">
+                    <h3 className="text-xl font-bold text-white tracking-tight font-display group-hover:text-brand-blue transition-colors">
                       {service.title}
                     </h3>
 
-                    <p className="text-xs md:text-sm text-slate-500 font-medium leading-relaxed">
+                    <p className="text-xs md:text-sm text-slate-400 font-medium leading-relaxed">
                       {service.description}
                     </p>
 
                     {/* Specs Bullet Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4 border-t border-brand-bg-light">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-5 border-t border-white/[0.06]">
                       {service.specs.map((spec, i) => (
                         <div key={i} className={`flex items-center gap-2.5 ${isRtl ? 'flex-row-reverse text-right' : 'text-left'}`}>
-                          <CheckCircle className="h-4 w-4 text-brand-blue shrink-0" />
-                          <span className="text-xs font-medium text-slate-700">{spec}</span>
+                          <CheckCircle className="h-4 w-4 text-brand-blue shrink-0 animate-pulse" />
+                          <span className="text-xs font-semibold text-slate-300">{spec}</span>
                         </div>
                       ))}
                     </div>
@@ -124,10 +129,10 @@ export const Services: React.FC<ServicesProps> = ({ currentLang, onLangChange, o
                   <a
                     href="#/contact"
                     onClick={(e) => handleLinkClick(e, 'contact')}
-                    className="inline-flex items-center gap-1.5 mt-8 text-xs font-bold uppercase tracking-widest text-brand-navy hover:text-brand-blue transition-all w-fit cursor-pointer"
+                    className="inline-flex items-center gap-1.5 mt-8 text-xs font-black uppercase tracking-widest text-white hover:text-brand-blue transition-colors w-fit cursor-pointer font-display"
                   >
                     <span>{data.intro.getQuote}</span>
-                    <ChevronRight className={`h-4 w-4 stroke-[3] ${isRtl ? 'rotate-180' : ''}`} />
+                    <ChevronRight className={`h-4 w-4 stroke-[3.5] ${isRtl ? 'rotate-180' : ''}`} />
                   </a>
                 </div>
               ))}
@@ -136,14 +141,14 @@ export const Services: React.FC<ServicesProps> = ({ currentLang, onLangChange, o
         </section>
 
         {/* Step-by-Step Operating Process */}
-        <section className="py-24 bg-brand-navy-dark text-white">
+        <section className="py-24 bg-brand-navy border-b border-white/[0.06]">
           <div className="max-w-7xl mx-auto px-6">
             
             <div className="text-center max-w-2xl mx-auto mb-20 space-y-4">
-              <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-brand-navy border border-brand-blue/30 px-3.5 py-1.5 rounded-xl inline-block">
+              <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-white/[0.02] border border-white/[0.08] px-3.5 py-1.5 rounded-xl inline-block shadow-lg">
                 {data.process.subtitle}
               </span>
-              <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight">
+              <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight font-display">
                 {data.process.title}
               </h2>
             </div>
@@ -152,18 +157,18 @@ export const Services: React.FC<ServicesProps> = ({ currentLang, onLangChange, o
               {data.process.steps.map((step, index) => (
                 <div 
                   key={index}
-                  className="bg-brand-navy/35 border border-brand-navy/60 rounded-3xl p-8 relative overflow-hidden group hover:border-brand-blue transition-all duration-300"
+                  className="bg-white/[0.02] border border-white/[0.06] hover:border-brand-blue/30 rounded-3xl p-8 relative overflow-hidden group hover:bg-white/[0.03] transition-all duration-300"
                 >
-                  <div className="absolute right-4 top-4 text-4xl md:text-5xl font-black text-brand-navy/40 group-hover:text-brand-blue/15 transition-all">
+                  <div className="absolute right-4 top-4 text-4xl md:text-5xl font-black text-white/[0.02] group-hover:text-brand-blue/10 transition-all font-display">
                     {step.number}
                   </div>
-                  <span className="text-2xl font-extrabold text-brand-blue block mb-4">
+                  <span className="text-2xl font-extrabold text-brand-blue block mb-4 font-display drop-shadow-[0_0_8px_rgba(0,229,255,0.2)]">
                     {step.number}
                   </span>
-                  <h3 className="text-base font-bold text-white tracking-tight">
+                  <h3 className="text-base font-bold text-white tracking-tight font-display">
                     {step.title}
                   </h3>
-                  <p className="text-xs text-slate-300 font-medium mt-3.5 leading-relaxed">
+                  <p className="text-xs text-slate-400 font-medium mt-3.5 leading-relaxed">
                     {step.description}
                   </p>
                 </div>
@@ -174,17 +179,17 @@ export const Services: React.FC<ServicesProps> = ({ currentLang, onLangChange, o
         </section>
 
         {/* Customer Support Section */}
-        <section className="py-24 bg-brand-bg-lighter border-b border-zinc-100">
+        <section className="py-24 bg-transparent">
           <div className="max-w-7xl mx-auto px-6">
             
             <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-              <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-brand-bg-light px-3.5 py-1.5 rounded-xl inline-block">
+              <span className="text-xs font-black uppercase tracking-widest text-brand-blue bg-white/[0.02] border border-white/[0.08] px-3.5 py-1.5 rounded-xl inline-block shadow-lg">
                 {data.supportSection.subtitle}
               </span>
-              <h2 className="text-2xl md:text-4xl font-extrabold text-brand-navy tracking-tight">
+              <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight font-display">
                 {data.supportSection.title}
               </h2>
-              <p className="text-xs md:text-sm text-slate-500 font-medium leading-relaxed">
+              <p className="text-xs md:text-sm text-slate-400 font-medium leading-relaxed">
                 {data.supportSection.paragraph}
               </p>
             </div>
@@ -193,16 +198,16 @@ export const Services: React.FC<ServicesProps> = ({ currentLang, onLangChange, o
               {data.supportSection.items.map((item, index) => (
                 <div 
                   key={index}
-                  className="bg-white border border-slate-100 rounded-2xl p-6 transition-all duration-300 hover:border-brand-blue hover:shadow-lg hover:shadow-brand-blue/5 relative overflow-hidden group"
+                  className="bg-white/[0.02] border border-white/[0.06] hover:border-brand-blue/30 rounded-3xl p-6 hover:bg-white/[0.03] transition-all duration-300 relative overflow-hidden group hover:shadow-[0_10px_30px_-15px_rgba(0,229,255,0.08)]"
                 >
                   <div className="absolute top-0 left-0 w-1.5 h-full bg-brand-blue transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
-                  <div className="p-3 bg-brand-bg-light rounded-xl w-fit mb-5 shadow-sm">
+                  <div className="p-3 bg-white/[0.02] border border-white/[0.08] rounded-xl w-fit mb-5 shadow-md">
                     {renderSupportIcon(index)}
                   </div>
-                  <h3 className="text-base font-bold text-brand-navy tracking-tight">
+                  <h3 className="text-base font-bold text-white tracking-tight font-display group-hover:text-brand-blue transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-slate-500 font-medium mt-3 leading-relaxed">
+                  <p className="text-xs text-slate-400 font-medium mt-3 leading-relaxed">
                     {item.description}
                   </p>
                 </div>

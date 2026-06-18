@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
-import { ChevronRight, Calendar, Tag } from 'lucide-react';
+import { Calendar, Tag } from 'lucide-react';
 import blogData from '../data/blogData.json';
 
 interface BlogProps {
@@ -88,16 +88,6 @@ export const Blog: React.FC<BlogProps> = ({ currentLang, onLangChange, onPageCha
                       {post.excerpt}
                     </p>
                   </div>
-
-                  {/* Read More Link */}
-                  <a 
-                    href="#/blog"
-                    onClick={(e) => handleLinkClick(e, 'blog')}
-                    className="inline-flex items-center gap-1 mt-8 text-[11px] font-bold uppercase tracking-widest text-brand-navy hover:text-brand-blue transition-all w-fit cursor-pointer group/link"
-                  >
-                    <span>{post.readMore}</span>
-                    <ChevronRight className={`h-4 w-4 stroke-[3] transition-transform duration-200 group-hover/link:translate-x-1 ${isRtl ? 'rotate-180 group-hover/link:-translate-x-1' : ''}`} />
-                  </a>
                 </div>
               ))}
             </div>

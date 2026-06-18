@@ -32,6 +32,26 @@ export const Contact: React.FC<ContactProps> = ({ currentLang, onLangChange, onP
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Find the label for the selected option in the current language
+    const selectedOption = data.form.options.find((opt: { id: string; label: string }) => opt.id === formData.type);
+    const equipmentLabel = selectedOption ? selectedOption.label : formData.type;
+
+    // Construct WhatsApp message
+    const intro = currentLang === 'AR' ? 'مرحباً الكيانات، أود إرسال استفسار تشغيل:' : 'Hello Al Kayanat, I would like to submit a dispatch inquiry:';
+    const nameLabel = currentLang === 'AR' ? 'الاسم' : 'Name';
+    const emailLabel = currentLang === 'AR' ? 'البريد الإلكتروني' : 'Email';
+    const phoneLabel = currentLang === 'AR' ? 'الهاتف' : 'Phone';
+    const equipLabel = currentLang === 'AR' ? 'المعدة المطلوبة' : 'Equipment Type';
+    const detailsLabel = currentLang === 'AR' ? 'التفاصيل' : 'Details';
+
+    const formattedMessage = `${intro}\n\n• *${nameLabel}:* ${formData.name}\n• *${emailLabel}:* ${formData.email}\n• *${phoneLabel}:* ${formData.phone}\n• *${equipLabel}:* ${equipmentLabel}\n• *${detailsLabel}:* ${formData.message}`;
+
+    const whatsappUrl = `https://wa.me/966557062353?text=${encodeURIComponent(formattedMessage)}`;
+    
+    // Open WhatsApp in a new tab/window
+    window.open(whatsappUrl, '_blank');
+
     setIsSubmitted(true);
   };
 

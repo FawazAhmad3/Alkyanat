@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, Mail, ArrowUp } from 'lucide-react';
+import { MapPin, Phone, Mail, ArrowUp, MessageCircle } from 'lucide-react';
 import navigationData from '../data/navigationData.json';
 
 interface FooterProps {
@@ -186,6 +186,26 @@ export const Footer: React.FC<FooterProps> = ({ currentLang, onPageChange }) => 
                   className="text-xs text-brand-navy font-extrabold hover:text-brand-blue mt-0.5 transition-colors"
                 >
                   {footer.contactInfo.email}
+                </a>
+              </div>
+            </div>
+
+            {/* WhatsApp Card */}
+            <div className="flex gap-3.5 p-3 bg-white border border-zinc-200/80 rounded-xl hover:border-emerald-500 transition-all duration-300 shadow-sm">
+              <div className="p-2 bg-emerald-50 text-emerald-600 rounded-lg h-9 w-9 shrink-0 flex items-center justify-center">
+                <MessageCircle className="h-4 w-4" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[8px] uppercase tracking-wider font-extrabold text-zinc-400">
+                  {currentLang === 'AR' ? 'واتساب' : 'WhatsApp Support'}
+                </span>
+                <a
+                  href="https://wa.me/966557062353"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-brand-navy font-extrabold hover:text-emerald-500 mt-0.5 transition-colors"
+                >
+                  {currentLang === 'AR' ? 'تواصل معنا مباشرة' : 'Chat with Operations'}
                 </a>
               </div>
             </div>
